@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+    <meta name="viewport" content="width=320, height=568, initial-scale=1.0" charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="js/jqm/jquery.mobile-1.2.0.min.css" />
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/jqm/jquery.mobile-1.2.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/scrollstyle.css" />
+</head>
+<body style="width: 320px; height: 568px; font-size: 11px; background: #e7e7e7;">
+    <!-- Home -->
+    <div data-role="page" id="page1" data-title="饭否推荐">
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <!--
+            <a href="about.html" data-icon="help" data-theme="e">帮助</a>-->
+            <h3>饭否推荐
+            </h3>
+            <a href="#dialog1" data-icon="refresh" data-theme="e" data-role="button" data-rel="dialog">重置参数</a>
+        </div>
+        <div data-role="content">
+            <div data-role="collapsible-set" data-theme="b" data-content-theme="c">
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>用户推荐参数配置
+                    </h3>
+                    用户推荐算法选择：
+                    <div data-role="fieldcontain">
+                        <fieldset id="infoURA" data-role="controlgroup" data-type="vertical" data-mini="true">
+                            <input id="URA1" name="" value="URA1" type="radio">
+                            <label for="URA1">
+                                算法一
+                            </label>
+                            <input id="URA2" name="" value="URA2" type="radio">
+                            <label for="URA2">
+                                算法二
+                            </label>
+                        </fieldset>
+                    </div>
+                    
+                    <div data-role="fieldcontain">
+                        <br />
+            
+                            
+                        <br />
+                        <form id="formURA1">    
+                            算法一参数设置：
+                            <br />
+                            <br />
+                            <label for="fullname">名字:</label>                        
+                            <input type="text" name="fullname" id="URA1para1" disabled="true">
+                            
+                        </form>
+                        <br />
+                        
+                        <br />
+                        <form id="formURA2">    
+                            算法二参数设置：
+                            <br />
+                            <br />
+                            <label for="fullname">名字:</label>                        
+                            <input type="text" name="fullname" id="URA2para1" disabled="true">
+                            
+                        </form>
+                    
+                    </div>
+                </div>
+                <br />    
+                <div data-role="collapsible" data-collapsed="true">
+                    <h3>内容推荐参数配置
+                    </h3>
+                     <br />
+                    内容推荐算法选择：
+                    <div data-role="fieldcontain">
+                        <fieldset id="infoCRA" data-role="controlgroup" data-type="vertical" data-mini="true">
+                            <input id="CRA1" name="" value="CRA1" type="radio">
+                            <label for="CRA1">
+                                算法一
+                            </label>
+                            <input id="CRA2" name="" value="CRA2" type="radio">
+                            <label for="CRA2">
+                                算法二
+                            </label>
+                        </fieldset>
+                    </div>
+                    
+                    <div data-role="fieldcontain">
+                        <br />
+                        <br />
+                        <form id="formCRA1">    
+                            算法一参数设置：
+                            <label for="fullname">名字:</label>                        
+                            <input type="text" name="fullname" id="CRA1para1">
+                            
+                        </form>
+                        <br />
+                        
+                        <br />
+                        <form id="formCRA2">    
+                            算法二参数设置：
+                            <label for="fullname">名字:</label>                        
+                            <input type="text" name="fullname" id="CRA2para1">
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .ui-navbar .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+            .ui-navbar .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+            .ui-icon-settings { background: url(img/settings.png) 50% 50% no-repeat; background-size: 26px 28px; }
+            .ui-icon-about { background: url(img/about.png) 50% 50% no-repeat; background-size: 26px 18px; }
+            .ui-icon-helps { background: url(img/help.png) 50% 50% no-repeat; background-size: 24px 24px; }
+            .ui-icon-feedback { background: url(img/feedback.png) 50% 50% no-repeat; background-size: 24px 16px; }
+        </style>
+        <div data-role="footer" data-theme="c" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li data-theme="c"><a href="settings.html" data-icon="settings" class="ui-btn-active ui-state-persist">设置</a></li>
+                    <li><a data-icon="helps" href="recommend.html" id="submit">推荐</a></li>
+                    <li><a data-icon="about" href="about.html">关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="dialog1" data-theme="d" style="background-color: rgba(231,231,231,.5) !important">
+        <div data-role="content" data-theme="c" style="margin-top: 160px">
+            <div data-role="collapsible" data-content-theme="c" data-collapsed="false" data-theme="c">
+                <h3>注意</h3>
+                <p>
+                    是否继续重置本插件配置选项？重置后不可恢复。<br />
+                    
+                </p>
+            </div>
+            <a data-role="button" href="#" id="btnDefault" data-theme="e">重置</a>
+            <a data-role="button" href="#" data-rel="back" data-theme="c">取消</a>
+        </div>
+    </div>
+</body>
+</html>
