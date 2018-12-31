@@ -3,22 +3,21 @@ $(document).bind("pageinit", function () {
         //用户没有用过本插件使用默认配置
         init();
     }
-    function init(resource) {
+    function init() {
         window.localStorage.clear();
-        if (resource == "btnDefault") {//不清空usedWBADtag
-            window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
-        };
-        window.localStorage["showOrDelWBADInfo"] = "deleteWBAD";
-        window.localStorage["selectURA"]= "URA1";
-        window.localStorage["selectCRA"]= "CRA1";
+        window.localStorage["selectURA"]= "URA1";//默认选择用户用户算法1
+        window.localStorage["selectCRA"]= "CRA1";//默认选择推荐内容算法1
     }
 
     function loadProfile() {//遍历选定配置中已选定的项目
+        //先，清空
+        $("input[type='radio']").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").checkboxradio('enable').checkboxradio("refresh");
-        //$("input[type=text]").attr("checked", false);
+        $("input[type='text']").attr("value","");
 
-        var colortag = 0, deletetag = 0, styletag = 0, switchertag = 0, selectURAtag = 0, selectCRAtag = 0;
+
+        var selectURAtag = 0, selectCRAtag = 0;
         for (var i = 0; i < window.localStorage.length; i++) {
             var key = window.localStorage.key(i);
             var value = window.localStorage.getItem(key);
@@ -31,21 +30,10 @@ $(document).bind("pageinit", function () {
                 $("#exkeyword").val(value);
                 continue;
             }
-            if (key == "showOrDelWBADInfo") {
-                deletetag = 1;
-                
-                $("#infosett input[type='radio'][value='" + value + "']").attr("checked", true).checkboxradio("refresh");
-                if (value == "showWBAD") {
-                    $("#collsett input[type='radio']").checkboxradio('enable').checkboxradio("refresh");
-                } else if (value == "deleteWBAD") {
-                    $("#collsett input[type='radio']").checkboxradio('disable').checkboxradio("refresh");
-                }
-                continue;
-            }
-
             if (key == "selectURA") {
                 selectURAtag = 1;
                 $("#infoURA input[type='radio'][value='" + value + "']").attr("checked", true).checkboxradio("refresh");
+
                 if (value == "URA1") {         
                     $("#formURA1 input[type='text']").textinput('enable');
                     $("#formURA2 input[type='text']").textinput('disable');
@@ -67,28 +55,11 @@ $(document).bind("pageinit", function () {
                 }
                 continue;
             }
-            if (key == "photostyle") {
-                styletag = 1;
-                $("#photo_style input[type='radio'][value='" + value + "']").attr("checked", true).checkboxradio("refresh");
-                continue;
-            }
-            if (key == "colorvalue") {
-                colortag = 1;
-                $("#collsett input[type='radio'][value='" + value + "']").attr("checked", true).checkboxradio("refresh");
-                continue;
-            }
-            if (key == "switcher") {
-                switchertag = 1;
-                $("#switcher input[type='radio'][value='" + value + "']").attr("checked", true).checkboxradio("refresh");
-                continue;
-            }
+
             $("#" + value).attr("checked", true).checkboxradio("refresh");
         }
-        if (deletetag == 0) {//没有勾选，默认显示
-            window.localStorage["showOrDelWBADInfo"] = "showWBAD";
-            $("input[type='radio'][value='showWBAD']").attr("checked", true).checkboxradio("refresh");
-        }
-         if (selectCRAtag == 0) {//没有勾选，默认显示
+
+        if (selectCRAtag == 0) {//没有勾选，默认显示
             window.localStorage["selectCRA"] = "CRA1";
             $("input[type='radio'][value='CRA1']").attr("checked", true).checkboxradio("refresh");
         }
@@ -96,11 +67,10 @@ $(document).bind("pageinit", function () {
             window.localStorage["selectURA"] = "UR1";
             $("input[type='radio'][value='URA1']").attr("checked", true).checkboxradio("refresh");
         }
-  
-      
     }
     loadProfile();
-    $("input[type='checkbox']").bind("click", function (event, ui) {
+
+    $("input[type='checkbox']").unbind("click").bind("click", function (event, ui) {
         var id = $(this).attr("id");
         if ($(this).attr("checked") == "checked") {
             window.localStorage[id] = id;
@@ -111,38 +81,13 @@ $(document).bind("pageinit", function () {
         window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
     });
     $("#btnDefault").bind("click", function (event, ui) {
-        init("btnDefault");
+        init();
         loadProfile();
         history.back();
     });
-    $("#collsett input[type='radio']").bind("click", function (event, ui) {
-        var colorvalue = $(this).attr("value");
-        if ($(this).attr("checked") == "checked") {
-            window.localStorage["colorvalue"] = colorvalue;
-        }
-        else {
-            window.localStorage.removeItem(colorvalue);
-        }
-        window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
-    });
-    $("#infosett input[type='radio']").bind("click", function (event, ui) {
-        var colorvalue = $(this).attr("value");
-        if ($(this).attr("checked") == "checked") {
-            window.localStorage["showOrDelWBADInfo"] = colorvalue;
-        } else {
-            window.localStorage.removeItem(colorvalue);
-        }
 
-        if (colorvalue == "showWBAD") {
-            $("#collsett input[type='radio']").checkboxradio('enable').checkboxradio("refresh");
-        } else if (colorvalue == "deleteWBAD") {
-            $("#collsett input[type='radio']").checkboxradio('disable').checkboxradio("refresh");
-        }
-        window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
-        //选中：$("input[type='checkbox']").attr("checked", true).checkboxradio("refresh");
-        //不选：$("input[type='checkbox']").attr("checked", false).checkboxradio("refresh");
-    });
-    $("#infoURA input[type='radio']").bind("click", function (event, ui) {
+
+    $("#infoURA input[type='radio']").unbind("click").bind("click", function (event, ui) {
         var colorvalue = $(this).attr("value");
         if ($(this).attr("checked") == "checked") {
             window.localStorage["selectURA"] = colorvalue;
@@ -159,7 +104,7 @@ $(document).bind("pageinit", function () {
         }
         window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
     });
-    $("#infoCRA input[type='radio']").bind("click", function (event, ui) {
+    $("#infoCRA input[type='radio']").unbind("click").bind("click", function (event, ui) {
         var colorvalue = $(this).attr("value");
         if ($(this).attr("checked") == "checked") {
             window.localStorage["selectCRA"] = colorvalue;
@@ -174,8 +119,14 @@ $(document).bind("pageinit", function () {
             $("#formCRA2 input[type='text']").textinput('enable');
         }
         window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
+            // xhr.open("POST","http://localhost:8090/test",true);
+            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // var form = $("#formCRA1");
+            // var formData = new FormData(form);
+
             var xhr = new XMLHttpRequest();
-            xhr.open("GET","http://localhost:8091/test?name=li",true);
+            var url = "http://localhost:8090/test?para1=" + $("#CRA1para1").val();
+            xhr.open("GET",url,true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     // JSON解析器不会执行攻击者设计的脚本.
@@ -183,10 +134,22 @@ $(document).bind("pageinit", function () {
                     alert(resp);
                 }
             }
-            var form = $("formCRA1");
-            var formData = new FormData(form);
-            xhr.send(formData);
-        
+            //xhr.send();
     });
+    //当点击推荐时，将参数读入，写入
+    $("#submit").unbind("click").bind("click", function (){
+        window.localStorage["test"] = "ddd";
+
+        if(window.localStorage.getItem("usedWBADtag") != "USED"){
+            //如果没有使用过，则使用默认参数
+        }else{
+            // 如果是算法1且不为空，则把算法1的参数传递过去，如果是算法2，则把算法2的参数传递过去，否则传递默认值
+            // if(window.localStorage.getItem("selectCRA"))
+        }
+
+
+    });
+
+
     
 });

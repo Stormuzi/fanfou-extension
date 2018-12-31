@@ -16,16 +16,12 @@ public class TestController {
 
     @RequestMapping(value = "/test")
     @ResponseBody
-    public String test(@RequestParam Map<String,Object> data, HttpServletRequest request)
+    public String test(HttpServletRequest request)
     {
-          if(data.size()!=0){
-                for(Map.Entry<String,Object> entry: data.entrySet()){
-                    System.out.println("Key = "+ entry.getKey()+"value = "+ entry.getValue());
-                }
-                return "成了";
-          }else {
-          }
-          return "败了";
+
+        String a = request.getParameter("para1");
+        System.out.println(a);
+        return "eee";
 
 //        TestPojo testPojo = new TestPojo();
 //        testPojo.setUsername(name);

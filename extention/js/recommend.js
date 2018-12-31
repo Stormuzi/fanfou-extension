@@ -1,3 +1,10 @@
+$(document).ready(function(){
+    recommend()//执行函数
+});
+function recommend () {
+    alert("能跨域传递？");
+    alert(window.localStorage.getItem("test"));
+}
 $("#submit").bind("click", function (event, ui){
             alert("message?: DOMString");
             $.ajax({
