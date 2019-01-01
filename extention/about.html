@@ -2,15 +2,13 @@
 <html>
 <head>
     <title>My Page</title>
-    <meta name="viewport" content="width=320, height=568, initial-scale=1.0" />
+    <meta name="viewport" content="width=320, height=568, initial-scale=1.0" charset="UTF-8"/>
     <link rel="stylesheet" type="text/css" href="js/jqm/jquery.mobile-1.2.0.min.css" />
     <link rel="stylesheet" type="text/css" href="css/about.css" />
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/about.js"></script>
     <script type="text/javascript" src="js/jqm/jquery.mobile-1.2.0.min.js"></script>
-    <style>
-        li { list-style-type: none; list-style: url("img/icon.png") outside circle;}
-    </style>
+
 </head>
 <body style="width: 320px; height: 568px; font-size: 11px; background: #e7e7e7;">
     <!-- Home -->
@@ -32,8 +30,8 @@
         <div data-role="footer" data-theme="c" data-position="fixed">
             <div data-role="navbar" data-iconpos="top">
                 <ul>
-                    <li data-theme="c"><a href="settings.html" data-icon="settings">设置</a></li>
-                    <li><a data-icon="helps" href="recommend.html">推荐</a></li>
+                    <li data-theme="c"><a href="settings.html" data-icon="settings" data-ajax="false">设置</a></li>
+                    <li><a data-icon="helps" href="recommend.html" data-ajax="false">推荐</a></li>
                     <li><a data-icon="about" href="about.html" class="ui-btn-active ui-state-persist">关于</a></li> 
                 </ul>
             </div>

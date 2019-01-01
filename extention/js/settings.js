@@ -1,22 +1,23 @@
 $(document).bind("pageinit", function () {
+    //alert(window.localStorage.getItem("usedWBADtag"));
     if (window.localStorage.getItem("usedWBADtag") != "USED") {
         //用户没有用过本插件使用默认配置
         init();
     }
+
     function init() {
         window.localStorage.clear();
         window.localStorage["selectURA"]= "URA1";//默认选择用户用户算法1
         window.localStorage["selectCRA"]= "CRA1";//默认选择推荐内容算法1
-    }
-
-    function loadProfile() {//遍历选定配置中已选定的项目
         //先，清空
         $("input[type='radio']").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").checkboxradio('enable').checkboxradio("refresh");
         $("input[type='text']").attr("value","");
+    }
 
-
+    function loadProfile() {//遍历选定配置中已选定的项目
+        //TODO: 在load的时候，需要将保存的设定刷进去
         var selectURAtag = 0, selectCRAtag = 0;
         for (var i = 0; i < window.localStorage.length; i++) {
             var key = window.localStorage.key(i);
@@ -33,16 +34,16 @@ $(document).bind("pageinit", function () {
             if (key == "selectURA") {
                 selectURAtag = 1;
                 $("#infoURA input[type='radio'][value='" + value + "']").attr("checked", true).checkboxradio("refresh");
-
-                if (value == "URA1") {         
+                if (value == "URA1") {
                     $("#formURA1 input[type='text']").textinput('enable');
                     $("#formURA2 input[type='text']").textinput('disable');
-                } else if (value == "URA2") { 
+                } else if (value == "URA2") {
                     $("#formURA1 input[type='text']").textinput('disable');
                     $("#formURA2 input[type='text']").textinput('enable');
                 }
                 continue;
             }
+
             if (key == "selectCRA") {
                 selectCRAtag = 1;
                 $("#infoCRA input[type='radio'][value='" + value + "']").attr("checked", true).checkboxradio("refresh");
@@ -50,22 +51,21 @@ $(document).bind("pageinit", function () {
                     $("#formCRA1 input[type='text']").textinput('enable');
                     $("#formCRA2 input[type='text']").textinput('disable');
                 } else if (value == "CRA2") {
-                    $("#formURA1 input[type='text']").textinput('enable');
-                    $("#formURA2 input[type='text']").textinput('disable');
+                    $("#formCRA1 input[type='text']").textinput('disable');
+                    $("#formCRA2 input[type='text']").textinput('enable');
                 }
                 continue;
             }
 
-            $("#" + value).attr("checked", true).checkboxradio("refresh");
-        }
-
-        if (selectCRAtag == 0) {//没有勾选，默认显示
-            window.localStorage["selectCRA"] = "CRA1";
-            $("input[type='radio'][value='CRA1']").attr("checked", true).checkboxradio("refresh");
+            //$("#" + value).attr("checked", true).checkboxradio("refresh");
         }
         if (selectURAtag == 0) {//没有勾选，默认显示
             window.localStorage["selectURA"] = "UR1";
             $("input[type='radio'][value='URA1']").attr("checked", true).checkboxradio("refresh");
+        }
+        if (selectCRAtag == 0) {//没有勾选，默认显示
+            window.localStorage["selectCRA"] = "CRA1";
+            $("input[type='radio'][value='CRA1']").attr("checked", true).checkboxradio("refresh");
         }
     }
     loadProfile();
@@ -138,7 +138,7 @@ $(document).bind("pageinit", function () {
     });
     //当点击推荐时，将参数读入，写入
     $("#submit").unbind("click").bind("click", function (){
-        window.localStorage["test"] = "ddd";
+        window.localStorage["test"] = $("#URA1para1").val(); //初步证明，可行！
 
         if(window.localStorage.getItem("usedWBADtag") != "USED"){
             //如果没有使用过，则使用默认参数
