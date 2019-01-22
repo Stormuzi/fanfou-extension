@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/crawler/crawler.iml" filepath="$PROJECT_DIR$/crawler/crawler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extention/extention.iml" filepath="$PROJECT_DIR$/extention/extention.iml" />
       <module fileurl="file://$PROJECT_DIR$/fanfou-background/fanfou.iml" filepath="$PROJECT_DIR$/fanfou-background/fanfou.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/git-fanfou.iml" filepath="$PROJECT_DIR$/.idea/git-fanfou.iml" />
     </modules>
   </component>
 </project>

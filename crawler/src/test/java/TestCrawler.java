@@ -2,7 +2,6 @@
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.Arguments;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,20 +12,30 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class TestCrawler {
+   private static final String FRIENDS_URL = "http://api.fanfou.com/users/friends.json?id=";
+//    private static final String
 
     public static void main(String[] args) throws MalformedURLException {
+        String id = "~Z-lo_exzyRQ";
 
-        String url = "http://api.fanfou.com/statuses/user_timeline.json?id=~GLQOQzd6ayw";
+        String url = FRIENDS_URL + id;
         JSONArray jsonArray = Crawler(url);
         for (Object obj : jsonArray) {
             JSONObject jsonObject = (JSONObject) obj;
-            System.out.println(jsonObject.getString("id")+" : " + jsonObject.getString("created_at") +" 内容： "+ jsonObject.getString("text"));
-            
-        }
+            System.out.println(jsonObject.getString("id")+" : " + jsonObject.getString("birthday") +" 内容： "+ jsonObject.getString("screen_name"));
 
+        }
+        System.out.println(jsonArray);
     }
 
-    public static JSONArray Crawler(String url) throws MalformedURLException {
+    /**
+     * 根据url获取JSONArray
+     * @param url
+     * @return
+     * @throws MalformedURLException
+     */
+    public static JSONArray Crawler(String url) throws MalformedURLException
+    {
         InputStreamReader reader = null;
         BufferedReader in = null;
         URL httpUrl = new URL(url);
@@ -37,19 +46,18 @@ public class TestCrawler {
             in = new BufferedReader(reader);
             String line = null;//每行内容
             StringBuffer content = new StringBuffer();
-            while ((line = in.readLine()) != null) {
+            while ((line = in.readLine()) != null)
+            {
                 content.append(line);
             }
-            if (content.length() != 0) {
-                //String jsonStr = content.toString().replaceAll("\\n", "");
+            if (content.length() != 0)
+            {
                 String jsonStr = content.toString();
                 JSONArray jsonArray = JSON.parseArray(jsonStr);
-
                 return jsonArray;
             }
-
-
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }finally {
             try {
@@ -58,9 +66,17 @@ public class TestCrawler {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
         return null;
+    }
+    //解析爬取到的关注者
+    public static void parseFriends()
+    {
+
+    }
+    //解析用户的消息
+    public static void parseUserTimeline()
+    {
+
     }
 }
