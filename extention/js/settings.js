@@ -1,28 +1,51 @@
 $(document).bind("pageinit", function () {
+
+
     //alert(window.localStorage.getItem("usedWBADtag"));
     if (window.localStorage.getItem("usedWBADtag") != "USED") {
         //用户没有用过本插件使用默认配置
         init();
     }
-
     function init() {
         window.localStorage.clear();
         window.localStorage["selectURA"]= "URA1";//默认选择用户用户算法1
         window.localStorage["selectCRA"]= "CRA1";//默认选择推荐内容算法1
-        //先，清空
+        //先清空
         $("input[type='radio']").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").checkboxradio('enable').checkboxradio("refresh");
         $("input[type='text']").attr("value","");
+        console.log("init done");
     }
+    //获取用户id
+    function getUserId(){
+        //用户登录后先进入http://fanfou.com/home，登录后，爬取用户id
+        //从content-script中获取html，抓取用户id
+        chrome.tabs.query({active: true},function(tabs) {
+            console.log("tabs",tabs);
+            console.log("tabs[0].id",tabs[0].id);
+            if(tabs[0].url == "http://fanfou.com/home")
+            {
+                chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
+
+                    if(response != null){
+                        var arr = response.split("/");
+                        window.localStorage["user_id"] = arr[3];
+                        console.log(user_id);
+                    }
+                });
+            }
+        });
+    }
+    getUserId();
 
     function loadProfile() {//遍历选定配置中已选定的项目
-        //TODO: 在load的时候，需要将保存的设定刷进去
+        //TODO: 在load的时候，需要将保存的设定手动写一遍进去，比如参数，选项
         var selectURAtag = 0, selectCRAtag = 0;
         for (var i = 0; i < window.localStorage.length; i++) {
             var key = window.localStorage.key(i);
             var value = window.localStorage.getItem(key);
-            console.log("value=" + value);
+            console.log("key =" +key +" value"+ i +" = " + value);
             if (key == "keyword") {
                 $("#keyword").val(value);
                 continue;
@@ -56,7 +79,6 @@ $(document).bind("pageinit", function () {
                 }
                 continue;
             }
-
             //$("#" + value).attr("checked", true).checkboxradio("refresh");
         }
         if (selectURAtag == 0) {//没有勾选，默认显示
@@ -119,32 +141,17 @@ $(document).bind("pageinit", function () {
             $("#formCRA2 input[type='text']").textinput('enable');
         }
         window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
-            // xhr.open("POST","http://localhost:8090/test",true);
-            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            // var form = $("#formCRA1");
-            // var formData = new FormData(form);
 
-            var xhr = new XMLHttpRequest();
-            var url = "http://localhost:8090/test?para1=" + $("#CRA1para1").val();
-            xhr.open("GET",url,true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4) {
-                    // JSON解析器不会执行攻击者设计的脚本.
-                    var resp=xhr.responseText;
-                    alert(resp);
-                }
-            }
-            //xhr.send();
     });
-    //当点击推荐时，将参数读入，写入
-    $("#submit").unbind("click").bind("click", function (){
-        window.localStorage["test"] = $("#URA1para1").val(); //初步证明，可行！
 
+    //TODO:当点击推荐页面时，验证参数后将参数读入并写进loadstorage
+    $("#submit").unbind("click").bind("click", function (){
+        window.localStorage["test"] = $("#URA1para1").val();
         if(window.localStorage.getItem("usedWBADtag") != "USED"){
             //如果没有使用过，则使用默认参数
         }else{
             // 如果是算法1且不为空，则把算法1的参数传递过去，如果是算法2，则把算法2的参数传递过去，否则传递默认值
-            // if(window.localStorage.getItem("selectCRA"))
+            // if(window.localStorage.getItem("selectCRA") == "CRA1")
         }
 
 

@@ -1,7 +1,4 @@
 ﻿
-
-
-
 // (function () {
 //     chrome.browserAction.setIcon({ path: "img/get_started16.png" });//切换图标
 //     setTimeout(function () {

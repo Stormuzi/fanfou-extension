@@ -2,10 +2,7 @@
 	"name": "饭否推荐",
 	"version": "1.0",
 	"description": "针对饭否社交网络的浏览器插件",
-	"permissions": [
-		"contextMenus", "webRequest","tabs","http://fanfou.com/*","http://www.fanfou.com/*",
-		"http://localhost/*"
-	],
+
 	"background": { "scripts": ["js/background.js"] },
 	"browser_action": {
 		"name": "饭否推荐",
@@ -16,10 +13,13 @@
 		"16":"img/get_started16.png"
 	},
 	"manifest_version": 2,
+	"permissions": [
+		"contextMenus", "tabs","http://fanfou.com/*",
+		"http://localhost/*","activeTab"
+	],
 	"content_scripts": [{
-		"matches": ["http://e.fanfou.com/*","http://fanfou.com/*"],
-		"css": ["css/app.css"],
-		"js": ["js/jquery-1.7.2.min.js","js/jquery.scrollintoview.js","js/weiboADBlock.js"]
+		"matches": ["http://fanfou.com/*","https://fanfou.com/*"],
+		"js": ["js/jquery-1.7.2.min.js","js/jquery.scrollintoview.js","js/myscript.js"]
 	}]
 	
 }
