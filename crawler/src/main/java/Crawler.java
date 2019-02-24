@@ -34,6 +34,8 @@ public class Crawler {
     public static void main(String[] args) throws MalformedURLException, SQLException {
 
     }
+
+
     //游标操作
     private static void do_vernier(){
         //游标后移
@@ -118,7 +120,7 @@ public class Crawler {
         conn.close();
     }
     //解析用户的消息
-    public static void parseUserTimeline()
+    public static void Crawler_UserTimeline()
     {
 
     }
