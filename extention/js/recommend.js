@@ -8,7 +8,7 @@ $(document).bind("pageinit", function (){
         // var form = $("#formCRA1");
         // var formData = new FormData(form);
         var xhr = new XMLHttpRequest();
-        var url = "http://localhost:8090/test?para1=" + $("#CRA1para1").val();
+        var url = "http://localhost:8080/fanfou_Web_exploded/test?para1=" + window.localStorage.getItem("user_id");
         xhr.open("GET",url,true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
@@ -17,7 +17,7 @@ $(document).bind("pageinit", function (){
                 alert(resp);
             }
         }
-        //xhr.send();
+        xhr.send();
     }
 
 

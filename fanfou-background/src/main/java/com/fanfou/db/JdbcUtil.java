@@ -1,10 +1,13 @@
+package com.fanfou.db;
+
 import java.sql.*;
 
 public class JdbcUtil {
     //通过properties工具就可以获取到properties文件中的键值从而可以加载驱动 获取链接 从而 可以增删改查
-    private static Connection conn = null;
 
-    public static Connection getConn(){
+
+    public static Connection getConn() throws SQLException {
+        Connection conn = null;
         PropertiesUtil.loadFile("jdbc.properties");
         String driver = PropertiesUtil.getPropertyValue("driver");
         String url = PropertiesUtil.getPropertyValue("url");
@@ -17,17 +20,11 @@ public class JdbcUtil {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-            close();
+            conn.close();
         }
         return conn;
     }
-    public static void close(){
-         try {
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-         }
-    }
+
     private static String getPasswordByUserName(String userName) throws SQLException {
         String sql = "select password from users where username = " +"'" + userName+"'";
         Connection conn = JdbcUtil.getConn();

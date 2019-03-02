@@ -1,3 +1,5 @@
+package com.fanfou.crawler;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -14,10 +16,12 @@ import java.net.URLConnection;
 public class CrawlerUtil {
     public static final String FRIENDS_URL = "http://api.fanfou.com/users/friends.json?id=";
     public static final String USER_INFO_URL = "http://api.fanfou.com/users/show.json?id=";
+    public static final String USER_TIMELINE_URL = "http://api.fanfou.com/statuses/user_timeline.json?id=";
 
     private static String CrawlerGetString(String url) throws MalformedURLException {
         InputStreamReader reader = null;
         BufferedReader in = null;
+        if(url==null) return null;
         URL httpUrl = new URL(url);
         try {
             URLConnection connection =(HttpURLConnection) httpUrl.openConnection();
@@ -51,6 +55,7 @@ public class CrawlerUtil {
      */
     public static JSONArray CrawlerArray(String url) throws MalformedURLException
     {
+            if(url == null) return null;
             String jsonStr = CrawlerGetString(url);
             if(jsonStr==null) return null;
             JSONArray jsonArray = JSON.parseArray(jsonStr);

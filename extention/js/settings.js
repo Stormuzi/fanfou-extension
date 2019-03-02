@@ -31,7 +31,7 @@ $(document).bind("pageinit", function () {
                     if(response != null){
                         var arr = response.split("/");
                         window.localStorage["user_id"] = arr[3];
-                        console.log(user_id);
+                        console.log(arr[3]);
                     }
                 });
             }
