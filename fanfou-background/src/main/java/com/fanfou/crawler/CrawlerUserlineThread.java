@@ -7,6 +7,8 @@ import com.fanfou.db.RedisUtil;
 import org.jsoup.helper.StringUtil;
 import redis.clients.jedis.Jedis;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,12 +19,8 @@ import java.util.Queue;
 import java.util.Set;
 
 
-public class CrawlerUserlineThread implements Runnable{
-    private String id;
+public class CrawlerUserlineThread{
 
-    public CrawlerUserlineThread(String id){
-        this.id = id;
-    }
     //等待爬取的id队列一层
     private static Queue<String> waitId=new LinkedList<>();
     //等待爬取的id队列二层
@@ -30,26 +28,9 @@ public class CrawlerUserlineThread implements Runnable{
     //访问过的id集合
     private static Set<String> visitedId=new HashSet<>();
 
-
-
-    @Override
-    public void run() {
-        try {
-            test(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) throws MalformedURLException, SQLException {
+    public static void main(String[] args) throws MalformedURLException, SQLException, FileNotFoundException {
         String id = "~Z-lo_exzyRQ";
-//        Thread thread = new Thread(new CrawlerUserlineThread(id));
-//        thread.start();
-//        Thread userFriendThread = new Thread(new Crawler(id));
-//        userFriendThread.start();
-        //test();
+
     }
 
     private static void Save_Usertimeline(JSONArray userTimeLines, Connection conn,String unique_id,Jedis jedis) throws SQLException {
@@ -71,7 +52,7 @@ public class CrawlerUserlineThread implements Runnable{
             JSONObject jsonObject = (JSONObject) obj;
             //去重
             if(jedis.sismember(unique_id+"timeLine",jsonObject.getString("id"))){
-                System.out.println("已有！");
+                //System.out.println("已有！");
                 continue;
             }
             jedis.sadd(unique_id+"timeLine",jsonObject.getString("id"));
@@ -111,10 +92,12 @@ public class CrawlerUserlineThread implements Runnable{
     }
 
 
-    public static void test(String idt) throws SQLException, MalformedURLException {
+    public void test(String idt) throws SQLException, MalformedURLException, FileNotFoundException {
         String url = CrawlerUtil.FRIENDS_URL+idt;
         JSONArray jsonArray = CrawlerUtil.CrawlerArray(url);
         Jedis jedis = RedisUtil.getJedis();
+        //清空日志
+        jedis.ltrim("timeLineLog",1,0);
         visitedId.add(idt);
         if (jsonArray == null){
             System.out.println("给的用户没有关注，无法推荐");
@@ -132,6 +115,7 @@ public class CrawlerUserlineThread implements Runnable{
         conn.setAutoCommit(false);
         System.out.println("开始爬取第一层");
         while(!waitId.isEmpty()){
+
             url = CrawlerUtil.FRIENDS_URL + waitId.peek();
             //爬取第一层用户的好友列表,放入第二层队列
             JSONArray first_plie = CrawlerUtil.CrawlerArray(url);
@@ -151,15 +135,18 @@ public class CrawlerUserlineThread implements Runnable{
             //爬取第一层节点的用户消息，存入数据库
             url = CrawlerUtil.USER_TIMELINE_URL + waitId.peek();
             JSONArray userTimeLines = CrawlerUtil.CrawlerArray(url);
-            System.out.println("用户好友:"+waitId.peek());
+            System.out.println("正在处理用户:"+waitId.peek());
+            jedis.lpush("timeLineLog","正在处理用户: "+waitId.peek());
             Save_Usertimeline(userTimeLines,conn,idt,jedis);
             System.out.println("提交成功");
             waitId.remove();
+
         }
         System.out.println("第一层爬取、入库完毕,开始爬取、入库第二层");
         while(!waitId2.isEmpty()){
             url = CrawlerUtil.USER_TIMELINE_URL + waitId2.peek();
-            System.out.println("用户好友:"+waitId2.peek());
+            System.out.println("正在处理：用户好友:"+waitId2.peek());
+            jedis.lpush("timeLineLog","正在处理用户: "+waitId2.peek());
             JSONArray userTimeLines = CrawlerUtil.CrawlerArray(url);
             if (userTimeLines == null){
                 waitId2.remove();
@@ -168,6 +155,7 @@ public class CrawlerUserlineThread implements Runnable{
             Save_Usertimeline(userTimeLines,conn,idt,jedis);
             System.out.println("提交成功");
             waitId2.remove();
+
         }
         System.out.println("第二层爬取、入库完毕");
         conn.close();

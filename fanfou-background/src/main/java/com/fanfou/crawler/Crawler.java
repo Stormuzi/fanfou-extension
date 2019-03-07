@@ -7,14 +7,15 @@ import com.fanfou.db.JdbcUtil;
 import com.fanfou.db.RedisUtil;
 import redis.clients.jedis.Jedis;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.sql.*;
 import java.util.*;
 
 
-public class Crawler implements Runnable{
-    private String id;
-    //等待爬取的id 1
+public class Crawler{
+
     private static Queue<String> waitId_first=new LinkedList<>();
     //等待爬取的id 2
     private static Queue<String> waitId_second=new LinkedList<>();
@@ -31,28 +32,19 @@ public class Crawler implements Runnable{
     //当前层列数
     private static int cur_plies_size = 0;
 
-    public Crawler(String id){
-        this.id = id;
-    }
-    @Override
-    public void run() {
-        try {
-            Crawler_Friends(id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public static void main(String[] args) throws MalformedURLException, SQLException {
         String id = "~Z-lo_exzyRQ";
-
+        Jedis jedis = new Jedis();
+        //String a = jedis.lpop("timeLineLog");
+        jedis.ltrim("timeLineLog",1,0);
+        //System.out.println(a==null);
     }
 
 
     //游标操作,针对本层移动
-    private static void do_vernier(){
+    private void do_vernier(){
         //游标后移
         vernier++;
         //如果这一层遍历完，到下一层，则使用另一个的队列
@@ -74,7 +66,7 @@ public class Crawler implements Runnable{
     //根据id爬取并入库关注者
     //自定义层数扩展思路：定义两个队列来交叉使用，比如根url装在第一个队列，那么第二个队列用来装根url爬取到的url，第一个队列使用完毕后变为空，又可以使用第一个队列装第三层url
     //通过is_first变量来进行控制使用哪个队列存，切换队列的时机是当本层遍历结束后，因此需要一个游标移动来确定本层是否遍历完毕
-    public static void Crawler_Friends(String id) throws SQLException, MalformedURLException {
+    public void Crawler_Friends(String id) throws SQLException, MalformedURLException, FileNotFoundException {
         String user_id = id;
         //通过url和id爬取用户信息和关注者
         waitId_first.add(id);
@@ -95,7 +87,7 @@ public class Crawler implements Runnable{
                 id = waitId_second.peek();
                 waitId_second.remove();
             }
-            System.out.println("爬取者："+ id);
+            System.out.println("正在处理爬取者："+ id);
             if(visitedId.contains(id)){
                 continue;
             }else{
@@ -130,7 +122,7 @@ public class Crawler implements Runnable{
      * @param conn jdbc连接
      * @throws SQLException
      */
-    private static void Save_Friend_Info(String user_id,JSONArray jsonArray,JSONObject id_info,Connection conn,Jedis jedis) throws SQLException {
+    private void Save_Friend_Info(String user_id,JSONArray jsonArray,JSONObject id_info,Connection conn,Jedis jedis) throws SQLException {
         String sql = "insert into fanfou_schema.user_friend_info (user_unique_id,unique_id,name,friend_id,friend_name) values (?,?,?,?,?)";
         PreparedStatement stmt=conn.prepareStatement(sql);
         //将爬取的信息入库，同时将新爬到的id添加到wait队列
@@ -160,7 +152,7 @@ public class Crawler implements Runnable{
         conn.commit();
     }
     //解析用户的消息
-    public static void Crawler_UserTimeline(String id)
+    public void Crawler_UserTimeline(String id)
     {
 
     }

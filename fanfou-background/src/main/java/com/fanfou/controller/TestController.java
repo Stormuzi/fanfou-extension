@@ -4,37 +4,66 @@ import com.fanfou.crawler.Crawler;
 import com.fanfou.crawler.CrawlerUserlineThread;
 import com.fanfou.pojo.TestPojo;
 
+import org.jsoup.helper.StringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.Objects;
 
 @Controller
 public class TestController {
 
-    @RequestMapping(value = "/test")
+    @RequestMapping(value = "/friendRe")
     @ResponseBody
-    public String test(HttpServletRequest request) throws InterruptedException {
+    public String friendRe(HttpServletRequest request) throws InterruptedException, FileNotFoundException, SQLException, MalformedURLException {
+        long startTime =  System.currentTimeMillis();
         System.out.println("访问后台");
-        Thread thread = new Thread(new CrawlerUserlineThread(request.getParameter("para1")));
-        thread.start();
-        Thread userFriendThread = new Thread(new Crawler(request.getParameter("para1")));
-        userFriendThread.start();
-        thread.join();
-        userFriendThread.join();
+        Crawler crawler = new Crawler();
+        crawler.Crawler_Friends(request.getParameter("para1"));
         String a = request.getParameter("para1");
-        System.out.println(a);
+        long endTime  =  System.currentTimeMillis();
+        long usedTime = (endTime-startTime)/1000;
+        System.out.println(usedTime);
         return "eee";
+    }
+    @RequestMapping(value = "/UserTimeLine")
+    @ResponseBody
+    public String userTimeLine(HttpServletRequest request) throws FileNotFoundException, SQLException, MalformedURLException {
+        long startTime =  System.currentTimeMillis();
+        System.out.println("访问后台");
+        CrawlerUserlineThread userline = new CrawlerUserlineThread();
+        userline.test(request.getParameter("para1"));
+        long endTime  =  System.currentTimeMillis();
+        long usedTime = (endTime-startTime)/1000;
+        System.out.println(usedTime + "s");
+        return "haole";
+    }
 
-//        TestPojo testPojo = new TestPojo();
-//        testPojo.setUsername(name);
-//        testPojo.setPassword("123");
-//        System.out.println("好起来了");
-//        System.out.println(name + test);
-//        return testPojo.toString() + test;
+    @RequestMapping(value = "/progress", produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String getProgress() throws IOException {
+        Jedis jedis = new Jedis();
+        String logString = "";
+        String temp = null;
+        for (int i = 0; i < 5; i++) {
+            temp = jedis.lpop("timeLineLog");
+            System.out.println("temp:" + temp);
+            System.out.println(temp == null);
+            if (temp != null && !StringUtil.isBlank(temp)) {
+                logString += (temp + " \n");
+            } else {
+                break;
+            }
+        }
+        System.out.println("logString:"+logString);
+        return logString;
     }
 }
