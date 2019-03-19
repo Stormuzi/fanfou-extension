@@ -40,7 +40,7 @@ public class TestController {
         long startTime =  System.currentTimeMillis();
         System.out.println("访问后台");
         CrawlerUserlineThread userline = new CrawlerUserlineThread();
-        userline.test(request.getParameter("para1"));
+        userline.Crawler_User_TimeLine(request.getParameter("para1"));
         long endTime  =  System.currentTimeMillis();
         long usedTime = (endTime-startTime)/1000;
         System.out.println(usedTime + "s");
@@ -66,4 +66,6 @@ public class TestController {
         System.out.println("logString:"+logString);
         return logString;
     }
+
+
 }

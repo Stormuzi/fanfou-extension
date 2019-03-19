@@ -17,6 +17,7 @@ public class CrawlerUtil {
     public static final String FRIENDS_URL = "http://api.fanfou.com/users/friends.json?id=";
     public static final String USER_INFO_URL = "http://api.fanfou.com/users/show.json?id=";
     public static final String USER_TIMELINE_URL = "http://api.fanfou.com/statuses/user_timeline.json?id=";
+    public static final String SIGINAL_TIMELINE_URL = "http://fanfou.com/statuses/";
 
     private static String CrawlerGetString(String url) throws MalformedURLException {
         InputStreamReader reader = null;

@@ -5,10 +5,10 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fanfou.db.JdbcUtil;
 import com.fanfou.db.RedisUtil;
+import org.python.util.PythonInterpreter;
 import redis.clients.jedis.Jedis;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.sql.*;
 import java.util.*;
@@ -34,12 +34,21 @@ public class Crawler{
 
 
 
-    public static void main(String[] args) throws MalformedURLException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException, InterruptedException {
         String id = "~Z-lo_exzyRQ";
-        Jedis jedis = new Jedis();
-        //String a = jedis.lpop("timeLineLog");
-        jedis.ltrim("timeLineLog",1,0);
-        //System.out.println(a==null);
+        Process process = Runtime.getRuntime().exec("python C:\\Users\\袁家巷2单元4楼\\Desktop\\bishe\\python代码\\user.py");
+        LineNumberReader  in = new LineNumberReader(new InputStreamReader(process.getInputStream(),"GBK"));
+//        LineNumberReader  in = new LineNumberReader(new InputStreamReader(process.getErrorStream()));
+        String line=null;
+        while((line =in.readLine()) != null){
+            System.out.println(line);
+        }
+        in.close();
+        process.waitFor();
+        System.out.println(process.waitFor());
+        System.out.println("end");
+//        PythonInterpreter pythonInterpreter  = new PythonInterpreter();
+
     }
 
 

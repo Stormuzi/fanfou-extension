@@ -19,6 +19,19 @@
         </fileset>
       </configuration>
     </facet>
+    <facet type="web" name="Web2">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/out/artifacts/fanfou_war_exploded/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/out/artifacts/fanfou_war_exploded" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="Python" name="Python">
+      <configuration sdkName="" />
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -69,5 +82,7 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.45" level="project" />
     <orderEntry type="library" name="Maven: redis.clients:jedis:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-pool2:2.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.python:jython:2.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.python:jython-standalone:2.5.2" level="project" />
   </component>
 </module>

@@ -12,6 +12,7 @@ import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -33,18 +34,17 @@ public class CrawlerUserlineThread{
 
     }
 
+    //将爬取到的消息存储
     private static void Save_Usertimeline(JSONArray userTimeLines, Connection conn,String unique_id,Jedis jedis) throws SQLException {
+        if (userTimeLines == null){
+            return;
+        }
         String userTimeLineSql = "insert into fanfou_schema.user_timeline " +
                 "(id,rawid,text,truncated,in_reply_to_status_id,in_reply_to_user_id,favorited,in_reply_to_screen_name," +
                 "is_self,repost_screen_name,repost_status_id,repost_user_id,user_unique_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         String userTimeLineNotNullSql = "insert into fanfou_schema.user_timeline_not_null " +
                 "(id,rawid,text,truncated,in_reply_to_status_id,in_reply_to_user_id,favorited,in_reply_to_screen_name," +
                 "is_self,repost_screen_name,repost_status_id,repost_user_id,user_unique_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-        if (userTimeLines == null){
-            return;
-        }
-
         PreparedStatement stmt=conn.prepareStatement(userTimeLineSql);
         PreparedStatement stmtNotNull=conn.prepareStatement(userTimeLineNotNullSql);
         Boolean notNullExist = false;
@@ -52,19 +52,20 @@ public class CrawlerUserlineThread{
             JSONObject jsonObject = (JSONObject) obj;
             //去重
             if(jedis.sismember(unique_id+"timeLine",jsonObject.getString("id"))){
-                //System.out.println("已有！");
                 continue;
             }
             jedis.sadd(unique_id+"timeLine",jsonObject.getString("id"));
-            Save_Single_UsertimeLine(jsonObject,stmt,unique_id);
-            if(!StringUtil.isBlank(jsonObject.getString("in_reply_to_status_id"))
-                    || !StringUtil.isBlank(jsonObject.getString("in_reply_to_user_id"))
-                    ||!StringUtil.isBlank(jsonObject.getString("in_reply_to_screen_name"))
-                    ||!StringUtil.isBlank(jsonObject.getString("repost_screen_name"))
+
+            //所有消息都存储到user_timeline总表
+            //Save_Single_UsertimeLine(jsonObject,stmt,unique_id);
+
+            //有转发的消息存储到not_null表
+            if(!StringUtil.isBlank(jsonObject.getString("repost_screen_name"))
                     ||!StringUtil.isBlank(jsonObject.getString("repost_status_id"))
                     ||!StringUtil.isBlank(jsonObject.getString("repost_user_id"))){
-              Save_Single_UsertimeLine(jsonObject,stmtNotNull,unique_id);
-              notNullExist = true;
+                Save_Single_UsertimeLine(jsonObject,stmtNotNull,unique_id);
+                Deal_With_Origin(unique_id,stmtNotNull,jedis,jsonObject);
+                notNullExist = true;
             }
         }
         stmt.executeBatch();
@@ -74,6 +75,24 @@ public class CrawlerUserlineThread{
         conn.commit();
     }
 
+    //由于可能爬取不到原消息，需要处理后单独入库原消息
+    private static void Deal_With_Origin(String unique_id,PreparedStatement stmtNotNull,Jedis jedis,JSONObject jsonObject) throws SQLException {
+        //如果爬取不到原消息
+        if(!jedis.sismember(unique_id + "timeLine",jsonObject.getString("repost_status_id"))){
+            JSONObject originObj = new JSONObject();
+            originObj.put("id",jsonObject.getString("repost_status_id"));
+            String[] texts = jsonObject.getString("text").split("@");
+            originObj.put("text",texts[texts.length-1]);
+            originObj.put("repost_screen_name",null);
+            originObj.put("repost_status_id",null);
+            originObj.put("repost_user_id",null);
+            jedis.sadd(unique_id+"timeLine",originObj.getString("id"));
+            //入库
+            Save_Single_UsertimeLine(originObj,stmtNotNull,unique_id);
+        }
+    }
+
+    //存储单条消息
     private static void Save_Single_UsertimeLine(JSONObject jsonObject,PreparedStatement stmt,String unique_id ) throws SQLException {
         stmt.setString(1,jsonObject.getString("id"));
         stmt.setString(2,jsonObject.getString("rawid"));
@@ -91,13 +110,17 @@ public class CrawlerUserlineThread{
         stmt.addBatch();
     }
 
-
-    public void test(String idt) throws SQLException, MalformedURLException, FileNotFoundException {
-        String url = CrawlerUtil.FRIENDS_URL+idt;
+    /*
+    爬取消息并存储
+     */
+    public void Crawler_User_TimeLine(String idt) throws SQLException, MalformedURLException, FileNotFoundException {
+        String url = CrawlerUtil.FRIENDS_URL + idt;
         JSONArray jsonArray = CrawlerUtil.CrawlerArray(url);
         Jedis jedis = RedisUtil.getJedis();
         //清空日志
         jedis.ltrim("timeLineLog",1,0);
+        Connection conn = JdbcUtil.getConn(); //数据库连接
+        conn.setAutoCommit(false);
         visitedId.add(idt);
         if (jsonArray == null){
             System.out.println("给的用户没有关注，无法推荐");
@@ -110,12 +133,8 @@ public class CrawlerUserlineThread{
             waitId.add(jsonObject.getString("unique_id"));
             visitedId.add(jsonObject.getString("unique_id"));
         }
-
-        Connection conn = JdbcUtil.getConn();
-        conn.setAutoCommit(false);
         System.out.println("开始爬取第一层");
         while(!waitId.isEmpty()){
-
             url = CrawlerUtil.FRIENDS_URL + waitId.peek();
             //爬取第一层用户的好友列表,放入第二层队列
             JSONArray first_plie = CrawlerUtil.CrawlerArray(url);
@@ -134,10 +153,10 @@ public class CrawlerUserlineThread{
             }
             //爬取第一层节点的用户消息，存入数据库
             url = CrawlerUtil.USER_TIMELINE_URL + waitId.peek();
-            JSONArray userTimeLines = CrawlerUtil.CrawlerArray(url);
+            JSONArray userTimeLinesArray = CrawlerUtil.CrawlerArray(url);
             System.out.println("正在处理用户:"+waitId.peek());
             jedis.lpush("timeLineLog","正在处理用户: "+waitId.peek());
-            Save_Usertimeline(userTimeLines,conn,idt,jedis);
+            Save_Usertimeline(userTimeLinesArray,conn,idt,jedis);
             System.out.println("提交成功");
             waitId.remove();
 
@@ -155,7 +174,6 @@ public class CrawlerUserlineThread{
             Save_Usertimeline(userTimeLines,conn,idt,jedis);
             System.out.println("提交成功");
             waitId2.remove();
-
         }
         System.out.println("第二层爬取、入库完毕");
         conn.close();
