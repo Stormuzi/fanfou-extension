@@ -125,7 +125,7 @@ public class Crawler{
 
     /**
      * 存储关注关系
-     * @param user_id   好友圈所属用户id
+     * @param user_id   好友圈所属用户id3
      * @param jsonArray 本次id获取到的好友列表
      * @param id_info 本次id的用户信息
      * @param conn jdbc连接

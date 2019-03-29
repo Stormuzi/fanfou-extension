@@ -1,28 +1,49 @@
 
+from __future__ import division
+import random
+import copy
+import math
+import os
+import numpy as np
+import pymysql
+
+def get_user_timeline():
+    db = pymysql.connect(host="localhost",port=3306,user="root",\
+        password="123456",db="fanfou_schema",charset='utf8')
+    cursor = db.cursor()
+    sql = "SELECT * FROM fanfou_schema.user_timeline_not_null"
+    try:
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        return results
+    except Exception as e:
+        print ("Error")
+    finally:
+        db.close()
 
 
 def initial_data():
-    name = './u.data'
+    results = get_user_timeline()
     U = set()
     I = set()
     P = {}
     LU = []
     LI = []
-    fr = open(name, 'r')
     i=0
-    for line in fr:
-        line = line.strip('\r\n')
-        cols = line.split('\t')
+    for row in results:
         T = {}
-        user = int(cols[0])
-        item = int(cols[1])
+        user = row[13]
+        item = row[0]
         P.setdefault(user,[]).append(item)
         U.add(user)
         I.add(item)
-        if(i==50):
-            break
-        i+=1
-    fr.close()
+        if(row[10] is not None and row[10].strip() !=""):
+        	item = row[10]
+        	P.setdefault(user,[]).append(item)
+        	I.add(item)
+        # if(i==25):
+        #     break
+        # i+=1
     LU = list(U)
     LI = list(I)
     return P,LU,LI
@@ -76,12 +97,12 @@ def make_recommendation(P, S, LU, LI, len_user, len_item):
         Gt[uid] = D1
     return Gt
 
-if __name__ == '__main__':
+if __name__ == '__main__':    
     print ('initial_data')
     P,LU,LI = initial_data()
     len_user = len(LU)
     len_item = len(LI)
-    print(P,"------\n",LU,"----------\n",LI)
+    # print("P",P)
     print ('actual_count_x1')
     A1 = actual_count_x1(P, LI, len_item)
     print ('actual_count_x2')
@@ -96,8 +117,10 @@ if __name__ == '__main__':
     print ('make_recommendation')
     Gt = make_recommendation(P, S, LU, LI, len_user, len_item)
 
-    # for uid in range(len_user):
-    #     content = 'user:' + str(uid) + '\t' + str(Gt[uid][0][0]) + ':' + str(Gt[uid][0][1])
-    #     for iid in range(1, top_k):
-    #         content = content + '\t' + str(Gt[uid][iid][0]) + ':' + str(Gt[uid][iid][1])
-    #     print content
+    for uid in range(len_user):
+        # if(LU[uid] != "~Z-lo_exzyRQ"):
+        #     continue
+        content = 'user:' + str(uid) +"LU[uid]:"+LU[uid] + '\t' + str(Gt[uid][0][0]) + ':' + str(Gt[uid][0][1])+ " item:"+LI[Gt[uid][0][0]]
+        for iid in range(1, top_k):
+            content = content + '\t' + str(Gt[uid][iid][0]) + ':' + str(Gt[uid][iid][1]) +" item:"+LI[Gt[uid][iid][0]]
+        print (content)

@@ -1,5 +1,6 @@
 package com.fanfou.crawler;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fanfou.db.JdbcUtil;
@@ -22,20 +23,34 @@ import java.util.Set;
 
 public class CrawlerUserlineThread{
 
-    //等待爬取的id队列一层
-    private static Queue<String> waitId=new LinkedList<>();
-    //等待爬取的id队列二层
-    private static Queue<String> waitId2=new LinkedList<>();
-    //访问过的id集合
-    private static Set<String> visitedId=new HashSet<>();
+
+
+
 
     public static void main(String[] args) throws MalformedURLException, SQLException, FileNotFoundException {
         String id = "~Z-lo_exzyRQ";
+        String url = CrawlerUtil.USER_TIMELINE_URL + id;
+        JSONArray userTimeLines = CrawlerUtil.CrawlerArray(url);
+        Connection conn = JdbcUtil.getConn(); //数据库连接
+        conn.setAutoCommit(false);
+        Jedis jedis = RedisUtil.getJedis();
+        System.out.println(jedis.sismember(id+"timeLine","j1k58ryuQLw"));
+//        jedis.srem(id+"timeLine","j1k58ryuQLw");
+//        jedis.srem(id+"timeLine","HxdKLB4l8RI");
+//
+//        System.out.println(userTimeLines);
+//        //将推荐对象单独入库
+//        Save_Usertimeline(userTimeLines,conn,id,jedis);
+//        conn.close();
+//        JSONObject ob =(JSONObject) userTimeLines.get(0);
+//        JSONObject jsob = JSON.parseObject(ob.getString("user"));
+//        System.out.println(jsob.getString("id"));
 
     }
 
     //将爬取到的消息存储
     private static void Save_Usertimeline(JSONArray userTimeLines, Connection conn,String unique_id,Jedis jedis) throws SQLException {
+
         if (userTimeLines == null){
             return;
         }
@@ -44,7 +59,7 @@ public class CrawlerUserlineThread{
                 "is_self,repost_screen_name,repost_status_id,repost_user_id,user_unique_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         String userTimeLineNotNullSql = "insert into fanfou_schema.user_timeline_not_null " +
                 "(id,rawid,text,truncated,in_reply_to_status_id,in_reply_to_user_id,favorited,in_reply_to_screen_name," +
-                "is_self,repost_screen_name,repost_status_id,repost_user_id,user_unique_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "is_self,repost_screen_name,repost_status_id,repost_user_id,user_unique_id,userid) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement stmt=conn.prepareStatement(userTimeLineSql);
         PreparedStatement stmtNotNull=conn.prepareStatement(userTimeLineNotNullSql);
         Boolean notNullExist = false;
@@ -55,14 +70,17 @@ public class CrawlerUserlineThread{
                 continue;
             }
             jedis.sadd(unique_id+"timeLine",jsonObject.getString("id"));
-
-            //所有消息都存储到user_timeline总表
-            //Save_Single_UsertimeLine(jsonObject,stmt,unique_id);
+            if(JSON.parseObject(jsonObject.getString("user")).getString("id").equals(unique_id)){
+                notNullExist = true;
+                jsonObject.put("userid",JSON.parseObject(jsonObject.getString("user")).getString("id"));
+                Save_Single_UsertimeLine(jsonObject,stmtNotNull,unique_id);
+            }
 
             //有转发的消息存储到not_null表
             if(!StringUtil.isBlank(jsonObject.getString("repost_screen_name"))
                     ||!StringUtil.isBlank(jsonObject.getString("repost_status_id"))
                     ||!StringUtil.isBlank(jsonObject.getString("repost_user_id"))){
+                jsonObject.put("userid",JSON.parseObject(jsonObject.getString("user")).getString("id"));
                 Save_Single_UsertimeLine(jsonObject,stmtNotNull,unique_id);
                 Deal_With_Origin(unique_id,stmtNotNull,jedis,jsonObject);
                 notNullExist = true;
@@ -77,7 +95,7 @@ public class CrawlerUserlineThread{
 
     //由于可能爬取不到原消息，需要处理后单独入库原消息
     private static void Deal_With_Origin(String unique_id,PreparedStatement stmtNotNull,Jedis jedis,JSONObject jsonObject) throws SQLException {
-        //如果爬取不到原消息
+        //如果爬取不到原消息，则对包含原消息的消息进行字符串处理，提取出原消息
         if(!jedis.sismember(unique_id + "timeLine",jsonObject.getString("repost_status_id"))){
             JSONObject originObj = new JSONObject();
             originObj.put("id",jsonObject.getString("repost_status_id"));
@@ -86,6 +104,7 @@ public class CrawlerUserlineThread{
             originObj.put("repost_screen_name",null);
             originObj.put("repost_status_id",null);
             originObj.put("repost_user_id",null);
+            originObj.put("userid", jsonObject.getString("repost_user_id"));
             jedis.sadd(unique_id+"timeLine",originObj.getString("id"));
             //入库
             Save_Single_UsertimeLine(originObj,stmtNotNull,unique_id);
@@ -107,6 +126,7 @@ public class CrawlerUserlineThread{
         stmt.setString(11,jsonObject.getString("repost_status_id"));
         stmt.setString(12,jsonObject.getString("repost_user_id"));
         stmt.setString(13,unique_id);
+        stmt.setString(14,jsonObject.getString("userid"));
         stmt.addBatch();
     }
 
@@ -117,15 +137,26 @@ public class CrawlerUserlineThread{
         String url = CrawlerUtil.FRIENDS_URL + idt;
         JSONArray jsonArray = CrawlerUtil.CrawlerArray(url);
         Jedis jedis = RedisUtil.getJedis();
+        //等待爬取的id队列一层
+        Queue<String> waitId=new LinkedList<>();
+        //等待爬取的id队列二层
+        Queue<String> waitId2=new LinkedList<>();
+        //访问过的id集合
+        Set<String> visitedId=new HashSet<>();
         //清空日志
         jedis.ltrim("timeLineLog",1,0);
         Connection conn = JdbcUtil.getConn(); //数据库连接
         conn.setAutoCommit(false);
+
+
         visitedId.add(idt);
         if (jsonArray == null){
             System.out.println("给的用户没有关注，无法推荐");
             return;
         }
+        //爬取自己的消息并入库：
+        JSONArray reArray = CrawlerUtil.CrawlerArray(CrawlerUtil.USER_TIMELINE_URL + idt);
+        Save_Usertimeline(reArray,conn,idt,jedis);
         //将用户关注列表放入第一层，且放入set
         for (Object obj : jsonArray) {
             JSONObject jsonObject = (JSONObject) obj;

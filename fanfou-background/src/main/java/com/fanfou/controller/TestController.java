@@ -29,6 +29,7 @@ public class TestController {
         Crawler crawler = new Crawler();
         crawler.Crawler_Friends(request.getParameter("para1"));
         String a = request.getParameter("para1");
+        System.out.println(a);
         long endTime  =  System.currentTimeMillis();
         long usedTime = (endTime-startTime)/1000;
         System.out.println(usedTime);

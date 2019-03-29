@@ -14,14 +14,14 @@ $(document).bind("pageinit", function () {
         $("input[type='radio']").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").attr("checked", false).checkboxradio("refresh");
         $("input[type=checkbox]").checkboxradio('enable').checkboxradio("refresh");
-        $("input[type='text']").attr("value","");
+        $("input[type='text']").attr("value" ,"");
         console.log("init done");
     }
     //获取用户id
     function getUserId(){
         //用户登录后先进入http://fanfou.com/home，登录后，爬取用户id
         //从content-script中获取html，抓取用户id
-        chrome.tabs.query({active: true},function(tabs) {
+        chrome.tabs.query({active: true,currentWindow: true},function(tabs) {
             console.log("tabs",tabs);
             console.log("tabs[0].id",tabs[0].id);
             if(tabs[0].url == "http://fanfou.com/home")
