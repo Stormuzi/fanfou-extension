@@ -7,43 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d62e167-59a5-4168-b1f2-387e2935502e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_45.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_45.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_manager_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_manager_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_core_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_core_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_error_diagnostics_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_error_diagnostics_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_monitor_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_monitor_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_descriptor_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_descriptor_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_parameter_documenter_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_parameter_documenter_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_registry_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_registry_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_profile_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_profile_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_project_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_project_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_repository_metadata_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_repository_metadata_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_settings_2_0_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_settings_2_0_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_toolchain_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_toolchain_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_plugins_maven_compiler_plugin_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_plugins_maven_compiler_plugin_2_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_provider_api_1_0_beta_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_provider_api_1_0_beta_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_api_1_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_api_1_8_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_javac_1_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_javac_1_8_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_manager_1_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_compiler_manager_1_8_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_2_0_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_2_0_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_python_jython_2_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_python_jython_2_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_python_jython_standalone_2_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_python_jython_standalone_2_5_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_9_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c4bc4597-7487-4ea8-9f57-26eb86313697.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c4bc4597-7487-4ea8-9f57-26eb86313697.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/fanfou.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/fanfou.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/RedisUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/pojo/TestPojo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/controller/TestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/web/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/web/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/web/WEB-INF/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/web/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/Crawler.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/Crawler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUserlineThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUserlineThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/db/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/db/RedisUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/pojo/TestPojo.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/fanfou-background/target/" />
     <ignored path="$PROJECT_DIR$/crawler/target/" />
@@ -85,6 +64,13 @@
         <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="fanfou_schema: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user_friend_info: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="fanfou_schema: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="user_timeline_not_null: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
@@ -92,20 +78,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="199" column="54" selection-start-line="199" selection-start-column="54" selection-end-line="199" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console_1.sql">
+        <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="64" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
+            <state relative-caret-position="325">
+              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,8 +93,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+            <state relative-caret-position="225">
+              <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-271">
+              <caret line="51" column="40" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console_1.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -136,6 +155,9 @@
       <find>maven-compiler-plugin</find>
       <find>连接</find>
       <find>logString</find>
+      <find>inser</find>
+      <find>log</find>
+      <find>plies</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -164,16 +186,21 @@
         <option value="$PROJECT_DIR$/crawler/src/test/java/TestCrawler.java" />
         <option value="$PROJECT_DIR$/crawler/pom.xml" />
         <option value="$PROJECT_DIR$/fanfou-background/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java" />
-        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java" />
         <option value="$PROJECT_DIR$/fanfou-background/web/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/fanfou-background/web/WEB-INF/dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/fanfou-background/pom.xml" />
         <option value="$PROJECT_DIR$/fanfou-background/src/main/resources/jdbc.properties" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/RedisUtil.java" />
+        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/PropertiesUtil.java" />
         <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java" />
+        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java" />
+        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java" />
+        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java" />
+        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console_1.sql" />
+        <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java" />
       </list>
     </option>
   </component>
@@ -213,11 +240,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="336" />
-    <option name="y" value="156" />
-    <option name="width" value="1371" />
-    <option name="height" value="974" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="493" />
+    <option name="width" value="1434" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -324,25 +350,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fanfou" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="git-fanfou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fanfou-background" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fanfou" type="462c0819:PsiDirectoryNode" />
               <item name="crawler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="git-fanfou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fanfou-background" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fanfou" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="git-fanfou" type="b2602c69:ProjectViewProjectNode" />
@@ -373,8 +381,8 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553863006793" />
-    <property name="database.console.LAST_STATE" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554727312354" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -427,6 +435,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Recommendation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.fanfou.recommendation.Recommendation" />
+      <module name="fanfou" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.fanfou.recommendation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RedisUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fanfou.db.RedisUtil" />
       <module name="fanfou" />
@@ -437,14 +459,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCrawler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestCrawler" />
-      <module name="crawler" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -475,28 +489,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="fanfou" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop/bishe/lizihou/user_recommendation" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Desktop/bishe/lizihou/user_recommendation/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
@@ -594,16 +586,15 @@
     <list>
       <item itemvalue="Application.RedisUtil" />
       <item itemvalue="Application.CrawlerUserlineThread" />
-      <item itemvalue="Application.TestCrawler" />
       <item itemvalue="Application.Crawler" />
-      <item itemvalue="Python.test" />
+      <item itemvalue="Application.Recommendation" />
       <item itemvalue="Tomcat Server.background" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CrawlerUserlineThread" />
+        <item itemvalue="Application.Recommendation" />
         <item itemvalue="Application.Crawler" />
-        <item itemvalue="Application.TestCrawler" />
+        <item itemvalue="Application.CrawlerUserlineThread" />
         <item itemvalue="Application.RedisUtil" />
       </list>
     </recent_temporary>
@@ -634,17 +625,34 @@
       <workItem from="1553665015838" duration="18343000" />
       <workItem from="1553733150021" duration="10754000" />
       <workItem from="1553822503780" duration="15126000" />
+      <workItem from="1553923988507" duration="9230000" />
+      <workItem from="1554096055831" duration="6804000" />
+      <workItem from="1554258414229" duration="3196000" />
+      <workItem from="1554341595639" duration="6673000" />
+      <workItem from="1554426057951" duration="29331000" />
+      <workItem from="1554517447103" duration="10575000" />
+      <workItem from="1554688752858" duration="6758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109457000" />
+    <option name="totallyTimeSpent" value="182024000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="336" y="156" width="1371" height="974" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24332571" />
-      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.4059081" />
+      <window_info id="Structure" order="1" weight="0.2496871" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -653,28 +661,28 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.41202673" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3986637" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.37973273" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3982002" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.17429194" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.51224947" />
+      <window_info anchor="bottom" id="Spring" order="6" weight="0.32962137" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.17322835" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.51224947" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.3295838" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.3997773" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3608018" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" weight="0.32962137" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="16" sideWeight="0.4989339" visible="true" weight="0.9436275" />
+      <window_info anchor="bottom" id="Database Console" order="16" sideWeight="0.4989339" weight="0.36782902" />
       <window_info anchor="bottom" id="SQL Generator" order="17" weight="0.47995546" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" visible="true" weight="0.31960335" />
+      <window_info anchor="right" id="Database" order="5" weight="0.4035181" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -682,8 +690,8 @@
       <window_info anchor="right" id="SciView" order="10" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16684435" />
-      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18085106" />
+      <window_info id="Structure" order="1" weight="0.2496871" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -692,8 +700,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" weight="0.44097996" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3986637" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.38997555" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3982002" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -703,17 +711,17 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.51224947" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.40087146" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.36220473" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" weight="0.32962137" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="16" sideWeight="0.4989339" visible="true" weight="0.51224947" />
+      <window_info anchor="bottom" id="Database Console" order="16" sideWeight="0.4989339" weight="0.200489" />
       <window_info anchor="bottom" id="SQL Generator" order="17" weight="0.47995546" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" visible="true" weight="0.15298508" />
+      <window_info anchor="right" id="Database" order="5" weight="0.31602" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -729,13 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
           <caret line="223" selection-start-line="223" selection-end-line="223" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/RedisUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -791,13 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://c4bc4597-7487-4ea8-9f57-26eb86313697/schema/fanfou_schema/table/user_friend_info">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/resources/jdbc.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -805,24 +799,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java">
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/RedisUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="33" />
+        <state relative-caret-position="258">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.11.3/jsoup-1.11.3.jar!/org/jsoup/helper/StringUtil.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        <state relative-caret-position="288">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java">
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/PropertiesUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="199" column="54" selection-start-line="199" selection-start-column="54" selection-end-line="199" selection-end-column="54" />
+        <state relative-caret-position="175">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt://E:/tools/JDK/java_jdk_11!/java.base/java/util/LinkedList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="405" selection-start-line="405" selection-end-line="405" />
+          <folding>
+            <element signature="e#9880#9881#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -833,24 +837,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console.sql">
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        <state relative-caret-position="239">
+          <caret line="98" column="56" lean-forward="true" selection-start-line="98" selection-start-column="56" selection-end-line="98" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java">
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+        <state relative-caret-position="349">
+          <caret line="24" column="81" lean-forward="true" selection-start-line="24" selection-start-column="81" selection-end-line="24" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console_1.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="64" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
+        <state relative-caret-position="125">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-271">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c4bc4597-7487-4ea8-9f57-26eb86313697/schema/fanfou_schema/table/user_friend_info">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

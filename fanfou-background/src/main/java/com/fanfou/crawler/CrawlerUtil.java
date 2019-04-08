@@ -18,6 +18,7 @@ public class CrawlerUtil {
     public static final String USER_INFO_URL = "http://api.fanfou.com/users/show.json?id=";
     public static final String USER_TIMELINE_URL = "http://api.fanfou.com/statuses/user_timeline.json?id=";
     public static final String SIGINAL_TIMELINE_URL = "http://fanfou.com/statuses/";
+    public static final String USER_HOME_PAGE = "http://fanfou.com/";
 
     private static String CrawlerGetString(String url) throws MalformedURLException {
         InputStreamReader reader = null;
@@ -27,6 +28,7 @@ public class CrawlerUtil {
         try {
             URLConnection connection =(HttpURLConnection) httpUrl.openConnection();
             connection.setConnectTimeout(1000);
+            connection.setReadTimeout(1000);
             if(((HttpURLConnection) connection).getResponseCode() != HttpURLConnection.HTTP_OK){
                 return null;
             }

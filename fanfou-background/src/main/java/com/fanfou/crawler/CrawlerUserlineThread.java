@@ -22,11 +22,6 @@ import java.util.Set;
 
 
 public class CrawlerUserlineThread{
-
-
-
-
-
     public static void main(String[] args) throws MalformedURLException, SQLException, FileNotFoundException {
         String id = "~Z-lo_exzyRQ";
         String url = CrawlerUtil.USER_TIMELINE_URL + id;
@@ -57,7 +52,7 @@ public class CrawlerUserlineThread{
         String userTimeLineSql = "insert into fanfou_schema.user_timeline " +
                 "(id,rawid,text,truncated,in_reply_to_status_id,in_reply_to_user_id,favorited,in_reply_to_screen_name," +
                 "is_self,repost_screen_name,repost_status_id,repost_user_id,user_unique_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        String userTimeLineNotNullSql = "insert into fanfou_schema.user_timeline_not_null " +
+        String userTimeLineNotNullSql = "insert ignore into fanfou_schema.user_timeline_not_null " +
                 "(id,rawid,text,truncated,in_reply_to_status_id,in_reply_to_user_id,favorited,in_reply_to_screen_name," +
                 "is_self,repost_screen_name,repost_status_id,repost_user_id,user_unique_id,userid) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement stmt=conn.prepareStatement(userTimeLineSql);
@@ -71,6 +66,7 @@ public class CrawlerUserlineThread{
             }
             jedis.sadd(unique_id+"timeLine",jsonObject.getString("id"));
             if(JSON.parseObject(jsonObject.getString("user")).getString("id").equals(unique_id)){
+                System.out.println("处理推荐者" + unique_id +"消息");
                 notNullExist = true;
                 jsonObject.put("userid",JSON.parseObject(jsonObject.getString("user")).getString("id"));
                 Save_Single_UsertimeLine(jsonObject,stmtNotNull,unique_id);
@@ -147,8 +143,6 @@ public class CrawlerUserlineThread{
         jedis.ltrim("timeLineLog",1,0);
         Connection conn = JdbcUtil.getConn(); //数据库连接
         conn.setAutoCommit(false);
-
-
         visitedId.add(idt);
         if (jsonArray == null){
             System.out.println("给的用户没有关注，无法推荐");
@@ -186,7 +180,7 @@ public class CrawlerUserlineThread{
             url = CrawlerUtil.USER_TIMELINE_URL + waitId.peek();
             JSONArray userTimeLinesArray = CrawlerUtil.CrawlerArray(url);
             System.out.println("正在处理用户:"+waitId.peek());
-            jedis.lpush("timeLineLog","正在处理用户: "+waitId.peek());
+            jedis.lpush("timeLineLog","正在处理用户:  "+waitId.peek());
             Save_Usertimeline(userTimeLinesArray,conn,idt,jedis);
             System.out.println("提交成功");
             waitId.remove();
@@ -196,7 +190,7 @@ public class CrawlerUserlineThread{
         while(!waitId2.isEmpty()){
             url = CrawlerUtil.USER_TIMELINE_URL + waitId2.peek();
             System.out.println("正在处理：用户好友:"+waitId2.peek());
-            jedis.lpush("timeLineLog","正在处理用户: "+waitId2.peek());
+            jedis.lpush("timeLineLog","正在处理用户:  "+waitId2.peek());
             JSONArray userTimeLines = CrawlerUtil.CrawlerArray(url);
             if (userTimeLines == null){
                 waitId2.remove();

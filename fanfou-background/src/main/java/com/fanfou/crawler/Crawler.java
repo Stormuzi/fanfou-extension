@@ -36,24 +36,12 @@ public class Crawler{
 
     public static void main(String[] args) throws IOException, SQLException, InterruptedException {
         String id = "~Z-lo_exzyRQ";
-        Process process = Runtime.getRuntime().exec("python C:\\Users\\袁家巷2单元4楼\\Desktop\\bishe\\python代码\\user.py");
-        LineNumberReader  in = new LineNumberReader(new InputStreamReader(process.getInputStream(),"GBK"));
-//        LineNumberReader  in = new LineNumberReader(new InputStreamReader(process.getErrorStream()));
-        String line=null;
-        while((line =in.readLine()) != null){
-            System.out.println(line);
-        }
-        in.close();
-        process.waitFor();
-        System.out.println(process.waitFor());
-        System.out.println("end");
-//        PythonInterpreter pythonInterpreter  = new PythonInterpreter();
-
+        Crawler_Friends(id);
     }
 
 
     //游标操作,针对本层移动
-    private void do_vernier(){
+    private  static void do_vernier(){
         //游标后移
         vernier++;
         //如果这一层遍历完，到下一层，则使用另一个的队列
@@ -67,7 +55,7 @@ public class Crawler{
             }
             vernier=0;
             cur_plies++;
-            System.out.println("进入"+ cur_plies +"层");
+            //System.out.println("进入"+ cur_plies +"层");
         }
     }
 
@@ -75,7 +63,7 @@ public class Crawler{
     //根据id爬取并入库关注者
     //自定义层数扩展思路：定义两个队列来交叉使用，比如根url装在第一个队列，那么第二个队列用来装根url爬取到的url，第一个队列使用完毕后变为空，又可以使用第一个队列装第三层url
     //通过is_first变量来进行控制使用哪个队列存，切换队列的时机是当本层遍历结束后，因此需要一个游标移动来确定本层是否遍历完毕
-    public void Crawler_Friends(String id) throws SQLException, MalformedURLException, FileNotFoundException {
+    public static void  Crawler_Friends(String id) throws SQLException, MalformedURLException, FileNotFoundException {
         String user_id = id;
         //通过url和id爬取用户信息和关注者
         waitId_first.add(id);
@@ -90,9 +78,11 @@ public class Crawler{
             }
             System.out.println("当前是第"+ cur_plies +"层");
             if(is_first){
+                if(waitId_first.isEmpty()) break;
                 id = waitId_first.peek();
                 waitId_first.remove();
             }else{
+                if(waitId_second.isEmpty()) break;
                 id = waitId_second.peek();
                 waitId_second.remove();
             }
@@ -119,7 +109,7 @@ public class Crawler{
             do_vernier();
             System.out.println("提交成功");
         }
-        System.out.println("爬取完成");
+        //System.out.println("爬取完成");
         conn.close();
     }
 
@@ -131,15 +121,15 @@ public class Crawler{
      * @param conn jdbc连接
      * @throws SQLException
      */
-    private void Save_Friend_Info(String user_id,JSONArray jsonArray,JSONObject id_info,Connection conn,Jedis jedis) throws SQLException {
-        String sql = "insert into fanfou_schema.user_friend_info (user_unique_id,unique_id,name,friend_id,friend_name) values (?,?,?,?,?)";
+    private static void Save_Friend_Info(String user_id,JSONArray jsonArray,JSONObject id_info,Connection conn,Jedis jedis) throws SQLException {
+        String sql = "insert ignore into fanfou_schema.user_friend_info (user_unique_id,unique_id,name,friend_id,friend_name) values (?,?,?,?,?)";
         PreparedStatement stmt=conn.prepareStatement(sql);
         //将爬取的信息入库，同时将新爬到的id添加到wait队列
         for (Object obj : jsonArray) {
             JSONObject jsonObject = (JSONObject) obj;
             if(jedis.sismember(user_id,
                     id_info.getString("unique_id")+jsonObject.getString("unique_id"))){
-                System.out.println("已有！");
+                //System.out.println("已有！");
                 continue;
             }
             //当在遍历第一层的时候，得到的结果应该放到下一层，反之亦然
@@ -160,11 +150,7 @@ public class Crawler{
         stmt.executeBatch();
         conn.commit();
     }
-    //解析用户的消息
-    public void Crawler_UserTimeline(String id)
-    {
 
-    }
 
 
 }

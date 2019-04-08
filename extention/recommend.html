@@ -9,7 +9,7 @@
   <script type="text/javascript" src="js/settings.js"></script>
   <script type="text/javascript" src="js/recommend.js"></script>
   <script type="text/javascript" src="js/jqm/jquery.mobile-1.2.0.min.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="css/li.css" />
 
 </head>
 <body style="width: 320px; height: 568px; font-size: 11px; background: #e7e7e7;">
@@ -25,17 +25,20 @@
                     <h3>推荐用户
                     </h3>
                     <br />
-                    <button id="re">Click Me!</button>
-                    <p id="friendLog" style="white-space: pre-wrap">好友爬虫情况</p>
+                    <button id="reUser">用户推荐！</button>
+                    <ul id="userResult" data-role="listview" style="white-space: pre-wrap">
+                    </ul>
                 </div>
-                <br />    
+                <br />   
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>推荐内容
                     </h3>
-                    
+                    <button id="reTimeLine">消息推荐！</button>
+                    <ul id="timelineResult" data-role="listview" style="white-space: pre-wrap">
                 </div>
             </div>
         </div>
+
         <style>
             .ui-navbar .ui-btn .ui-btn-inner { padding-top: 40px !important; }
             .ui-navbar .ui-btn .ui-icon { width: 28px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }

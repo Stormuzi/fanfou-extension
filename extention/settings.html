@@ -26,44 +26,53 @@
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>用户推荐参数配置
                     </h3>
-                    用户推荐算法选择：
+                    <b>用户推荐算法选择：</b>
                     <div data-role="fieldcontain">
                         <fieldset id="infoURA" data-role="controlgroup" data-type="vertical" data-mini="true">
                             <input id="URA1" name="" value="URA1" type="radio">
                             <label for="URA1">
-                                算法一
+                                common_neighbors
                             </label>
                             <input id="URA2" name="" value="URA2" type="radio">
                             <label for="URA2">
-                                算法二
+                                graph_distance
                             </label>
+                            <input id="URA3" name="" value="URA3" type="radio">
+                            <label for="URA3">
+                                katz
+                            </label>                            
                         </fieldset>
 
                     </div>
                     
                     <div data-role="fieldcontain">
-                        <br />
+                    	<b>算法参数设置：</b>
+                        <form id="formURA1">  
+                            <br />  
+                            top_k:
+                            <br />
+                            <label for="URAtop_k"></label>
+							<br />
+                            <input type="text" name="URAtop_k" id="URAtop_k" disabled="true" class="URApara">  
+                        </form>  
 
-                        <br />
-                        <form id="formURA1">    
+<!--                         <form id="formURA1">    
                             算法一参数设置：
                             <br />
                             <br />
                             <label for="URA1para1">名字:</label>
-                            <input type="text" name="URA1para1" id="URA1para1" disabled="true">
-                            
-                        </form>
-                        <br />
+                            <input type="text" name="URA1para1" id="URA1para1" disabled="true">  
+                        </form> -->
+<!--                         <br /> -->
                         
-                        <br />
+<!--                         <br />
                         <form id="formURA2">    
                             算法二参数设置：
                             <br />
                             <br />
                             <label for="URA2para1">名字:</label>
-                            <input type="text" name="URA2para1" id="URA2para1" disabled="true">
-                            
-                        </form>
+                            <input type="text" name="URA2para1" id="URA2para1" disabled="true">  
+                        </form> -->
                     
                     </div>
                 </div>
@@ -71,8 +80,7 @@
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>内容推荐参数配置
                     </h3>
-                     <br />
-                    内容推荐算法选择：
+<!--                     内容推荐算法选择：
                     <div data-role="fieldcontain">
                         <fieldset id="infoCRA" data-role="controlgroup" data-type="vertical" data-mini="true">
                             <input id="CRA1" name="" value="CRA1" type="radio">
@@ -84,9 +92,8 @@
                                 算法二
                             </label>
                         </fieldset>
-                    </div>
-                    
-                    <div data-role="fieldcontain">
+                    </div> -->        
+<!--                     <div data-role="fieldcontain">
                         <br />
                         <br />
                         <form id="formCRA1">    
@@ -101,8 +108,26 @@
                             算法二参数设置：
                             <label for="CRA2para1">名字:</label>
                             <input type="text" name="CRA2para1" id="CRA2para1">
-                            
                         </form>
+                    </div> -->
+
+ 					<div data-role="fieldcontain">
+                        <b>算法参数设置：</b>                 
+                        <form id="formCRA1">    
+                            <br />  
+                            top_k:
+                            <br />
+                            <label for="CRAtop_k"></label>
+							<br />
+                            <input type="text" name="CRAtop_k" id="CRAtop_k">
+                            <br />  
+                            alpha:
+                            <br />
+                            <label for="CRAalpha"></label>
+							<br />
+                            <input type="text" name="CRAalpha" id="CRAalpha">
+                        </form>
+                        <br />
                     </div>
                 </div>
             </div>

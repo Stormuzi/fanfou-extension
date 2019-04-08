@@ -6,14 +6,17 @@ import math
 import os
 import numpy as np
 import pymysql
+import sys
+
+gamma = 0.005
 
 def initial_graph():
 	results = get_user_friend()
 	G = {}
 	U = []
 	for row in results :
-		G.setdefault(row[0],[]).append(row[2])
-		G.setdefault(row[2],[]).append(row[0])
+		G.setdefault(row[1],[]).append(row[3])
+		G.setdefault(row[3],[]).append(row[1])
 	for value in G.keys():
 		G[value] = list(set(G[value]))  # G is a dict, operation on keys
 		USER_NUM = len(G)
@@ -55,8 +58,10 @@ def recommendation_for_users(U, G, method, top_k):
 		R_E = sorted(R.items(), key=lambda d:d[1], reverse=True) # used for evaluation, order by utility
 		content = 'method:' + str(method) + '\t' 'user:' + str(u)
 		for i in range(0, top_k):
-			content = content + '\t' + str(R_E[i][0]) + ':' + str(R_E[i][1])
-		print (content)
+			# content = content + '\t' + str(R_E[i][0]) + ':' + str(R_E[i][1])
+			content = str(R_E[i][0]) + ':' + str(R_E[i][1])
+			resu = str(R_E[i][0])
+			print (resu)
 
 def compute_common_neighbors_recommendation(u, U, G):
 	C = {}
@@ -141,10 +146,17 @@ def test():
 		break
 
 if __name__ == '__main__':
-	print('java in')
 	# test()
 	G, U = initial_graph()
-	top_k = 5
+	top_k = int(sys.argv[1])
+	ura = str(sys.argv[2])
+	
 	recommendation_methods = ['common_neighbors','graph_distance','katz']
-	for elem in recommendation_methods:
-		recommendation_for_users(U, G, elem, top_k)
+	if(ura == "URA1"):
+		recommendation_for_users(U,G,recommendation_methods[0],top_k)
+	elif(ura == "URA2"):
+		recommendation_for_users(U,G,recommendation_methods[1],top_k)
+	else:
+		recommendation_for_users(U,G,recommendation_methods[2],top_k)
+	# for elem in recommendation_methods:
+	# 	recommendation_for_users(U, G, elem, top_k)
