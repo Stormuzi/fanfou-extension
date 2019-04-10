@@ -42,7 +42,7 @@ def get_user_friend():
 	finally:
 		db.close()
 
-def recommendation_for_users(U, G, method, top_k):
+def recommendation_for_users(U, G, method, top_k, user_id):
 	#slice = random.sample(U, int(len(U)/10))
 	path = './result/utility/'
 	if os.path.exists(path) == False:
@@ -50,7 +50,7 @@ def recommendation_for_users(U, G, method, top_k):
 	name = path + method + '.txt'
 	tag = 0
 	for u in U:
-		if(str(u) != "~Z-lo_exzyRQ"):
+		if(str(u) != user_id):
 			continue
 		tag += 1
 		command = 'compute_' + method + '_recommendation(u, U, G)'
@@ -61,7 +61,7 @@ def recommendation_for_users(U, G, method, top_k):
 			# content = content + '\t' + str(R_E[i][0]) + ':' + str(R_E[i][1])
 			content = str(R_E[i][0]) + ':' + str(R_E[i][1])
 			resu = str(R_E[i][0])
-			print (resu)
+			print (content)
 
 def compute_common_neighbors_recommendation(u, U, G):
 	C = {}
@@ -150,13 +150,14 @@ if __name__ == '__main__':
 	G, U = initial_graph()
 	top_k = int(sys.argv[1])
 	ura = str(sys.argv[2])
-	
+	user_id = str(sys.argv[3])
+	isUserPrivate = str(sys.argv[4])
 	recommendation_methods = ['common_neighbors','graph_distance','katz']
 	if(ura == "URA1"):
-		recommendation_for_users(U,G,recommendation_methods[0],top_k)
+		recommendation_for_users(U,G,recommendation_methods[0],top_k,user_id)
 	elif(ura == "URA2"):
-		recommendation_for_users(U,G,recommendation_methods[1],top_k)
+		recommendation_for_users(U,G,recommendation_methods[1],top_k,user_id)
 	else:
-		recommendation_for_users(U,G,recommendation_methods[2],top_k)
+		recommendation_for_users(U,G,recommendation_methods[2],top_k,user_id)
 	# for elem in recommendation_methods:
 	# 	recommendation_for_users(U, G, elem, top_k)

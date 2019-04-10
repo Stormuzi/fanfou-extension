@@ -115,9 +115,10 @@ $(document).bind("pageinit", function () {
         var id = $(this).attr("id");
         if ($(this).attr("checked") == "checked") {
             window.localStorage[id] = id;
-            //alert("id=" + window.localStorage[id]);
+            // console.log("id=" + window.localStorage[id]);
         } else {
             window.localStorage.removeItem(id);
+            // console.log(window.localStorage[id] == null);
         }
         window.localStorage["usedWBADtag"] = "USED";//记录下用户已经使用过
     });

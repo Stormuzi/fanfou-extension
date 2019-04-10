@@ -7,22 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d62e167-59a5-4168-b1f2-387e2935502e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c4bc4597-7487-4ea8-9f57-26eb86313697.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c4bc4597-7487-4ea8-9f57-26eb86313697.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/db/RedisUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/pojo/TestPojo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/check/RequestCheckUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/check/RequestCheckUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/controller/TestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/Crawler.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/Crawler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUserlineThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUserlineThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/crawler/CrawlerUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/db/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/db/RedisUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/pojo/TestPojo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/recommendation/Recommendation.class" beforeDir="false" afterPath="$PROJECT_DIR$/fanfou-background/target/classes/com/fanfou/recommendation/Recommendation.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/fanfou-background/target/" />
     <ignored path="$PROJECT_DIR$/crawler/target/" />
@@ -81,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+            <state relative-caret-position="332">
+              <caret line="93" column="18" lean-forward="true" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,8 +93,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-271">
-              <caret line="51" column="40" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="40" />
+            <state relative-caret-position="407">
+              <caret line="68" column="61" lean-forward="true" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="798">
+              <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -197,9 +200,9 @@
         <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUserlineThread.java" />
         <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/Crawler.java" />
         <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console_1.sql" />
         <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java" />
         <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c4bc4597-7487-4ea8-9f57-26eb86313697/console_1.sql" />
         <option value="$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java" />
       </list>
     </option>
@@ -241,8 +244,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="493" />
-    <option name="width" value="1434" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="920" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -350,25 +354,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fanfou" type="462c0819:PsiDirectoryNode" />
-              <item name="crawler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="git-fanfou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fanfou-background" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="git-fanfou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fanfou-background" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="git-fanfou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fanfou-background" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="recommendation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -381,7 +367,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554727312354" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554864028321" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
@@ -631,12 +617,22 @@
       <workItem from="1554341595639" duration="6673000" />
       <workItem from="1554426057951" duration="29331000" />
       <workItem from="1554517447103" duration="10575000" />
-      <workItem from="1554688752858" duration="6758000" />
+      <workItem from="1554688752858" duration="7390000" />
+      <workItem from="1554772287189" duration="6314000" />
+      <workItem from="1554861119500" duration="2678000" />
     </task>
+    <task id="LOCAL-00001" summary="跑通，新需求待完成">
+      <created>1554727339129</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1554727339130</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182024000" />
+    <option name="totallyTimeSpent" value="191648000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -651,7 +647,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.4059081" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.40465117" />
       <window_info id="Structure" order="1" weight="0.2496871" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -731,6 +727,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="跑通，新需求待完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="跑通，新需求待完成" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jrt://E:/tools/JDK/java_jdk_11!/java.base/java/lang/Thread.class">
@@ -844,13 +844,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java">
+    <entry file="das://c4bc4597-7487-4ea8-9f57-26eb86313697/schema/fanfou_schema/table/user_friend_info">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="24" column="81" lean-forward="true" selection-start-line="24" selection-start-column="81" selection-end-line="24" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -875,34 +879,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java">
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/check/RequestCheckUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-271">
-          <caret line="51" column="40" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="40" />
+        <state relative-caret-position="798">
+          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/crawler/CrawlerUtil.java">
+    <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/controller/TestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c4bc4597-7487-4ea8-9f57-26eb86313697/schema/fanfou_schema/table/user_friend_info">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+        <state relative-caret-position="407">
+          <caret line="68" column="61" lean-forward="true" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fanfou-background/src/main/java/com/fanfou/recommendation/Recommendation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        <state relative-caret-position="332">
+          <caret line="93" column="18" lean-forward="true" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

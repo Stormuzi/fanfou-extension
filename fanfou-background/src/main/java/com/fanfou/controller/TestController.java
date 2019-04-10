@@ -34,26 +34,41 @@ public class TestController {
 //        crawler.Crawler_Friends(request.getParameter("user_id"));
         Recommendation recommendation = new Recommendation();
         //推荐用户
-        String result = recommendation.userRecommend(request.getParameter("URAtop_k"),request.getParameter("selectURA"));
+        String result = recommendation.userRecommend(request.getParameter("URAtop_k"),request.getParameter("selectURA"),request.getParameter("user_id"),request.getParameter("isUserPrivate"));
         return result;
 //        return null;
     }
 
-    @RequestMapping(value = "/UserTimeLine",  produces = "text/html; charset=utf-8")
+    @RequestMapping(value = "/crawlerTimeline", produces = "text/html;charset=utf-8")
     @ResponseBody
-    public String userTimeLine(HttpServletRequest request) throws IOException, SQLException, InterruptedException {
-        System.out.println("访问消息后台:" + request.getParameter("user_id"));
-        if(!RequestCheckUtil.isUserTimeLineRequestLegal(request)){
+    public String crawlerTimeline(HttpServletRequest request) throws IOException, SQLException {
+        System.out.println("访问消息爬取后台:" + request.getParameter("user_id"));
+        if(!RequestCheckUtil.isUserIdLegal(request)){
             return "null";
         }
         long startTime =  System.currentTimeMillis();
         //爬取用户消息
-//        CrawlerUserlineThread userline = new CrawlerUserlineThread();
-//        userline.Crawler_User_TimeLine(request.getParameter("user_id"));
+        CrawlerUserlineThread userline = new CrawlerUserlineThread();
+        userline.Crawler_User_TimeLine(request.getParameter("user_id"));
+        long endTime  =  System.currentTimeMillis();
+        long usedTime = (endTime-startTime)/1000;
+        System.out.println("use time:"+ usedTime + "s");
+        return "爬取完成！耗时：" + usedTime + "s";
+    }
+
+    @RequestMapping(value = "/UserTimeLineRe",  produces = "text/html; charset=utf-8")
+    @ResponseBody
+    public String userTimeLine(HttpServletRequest request) throws IOException, SQLException, InterruptedException {
+        System.out.println("访问消息推荐后台:" + request.getParameter("user_id"));
+        if(!RequestCheckUtil.isUserTimeLineRequestLegal(request)){
+            return "null";
+        }
+        long startTime =  System.currentTimeMillis();
+
         //用户消息推荐
         Recommendation recommendation = new Recommendation();
         String result =
-                recommendation.userTimeLineRecommend(request.getParameter("CRAtop_k"),request.getParameter("CRAalpha"));
+                recommendation.userTimeLineRecommend(request.getParameter("CRAtop_k"),request.getParameter("CRAalpha"),request.getParameter("user_id"),request.getParameter("isUserTimeLinePrivate"));
         long endTime  =  System.currentTimeMillis();
         long usedTime = (endTime-startTime)/1000;
         System.out.println("use time:"+ usedTime + "s");

@@ -46,14 +46,22 @@
                     </div>
                     
                     <div data-role="fieldcontain">
-                    	<b>算法参数设置：</b>
+                    	<b>用户推荐算法参数设置：</b>
                         <form id="formURA1">  
                             <br />  
+                            <strong>
                             top_k:
+                            </strong>
                             <br />
                             <label for="URAtop_k"></label>
 							<br />
-                            <input type="text" name="URAtop_k" id="URAtop_k" disabled="true" class="URApara">  
+                            <input type="text" name="URAtop_k" id="URAtop_k" disabled="true" class="URApara"> 
+                            <br />  
+                            
+                            <br />
+                            <label for="isUserPrivate">是否隐私推荐</label>
+                            <br />
+                            <input type="checkbox" name="isPrivate" id="isUserPrivate">
                         </form>  
 
 <!--                         <form id="formURA1">    
@@ -115,17 +123,25 @@
                         <b>算法参数设置：</b>                 
                         <form id="formCRA1">    
                             <br />  
+                            <strong>
                             top_k:
+                            </strong>
                             <br />
                             <label for="CRAtop_k"></label>
 							<br />
                             <input type="text" name="CRAtop_k" id="CRAtop_k">
                             <br />  
+                            <strong>
                             alpha:
+                            </strong>
                             <br />
                             <label for="CRAalpha"></label>
 							<br />
                             <input type="text" name="CRAalpha" id="CRAalpha">
+                            <br />
+                            <label for="isUserTimeLinePrivate">是否隐私推荐</label>
+                            <br />
+                            <input type="checkbox" name="isUserTimeLinePrivate" id="isUserTimeLinePrivate">
                         </form>
                         <br />
                     </div>

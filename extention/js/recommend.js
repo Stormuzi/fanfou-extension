@@ -17,6 +17,10 @@ $(document).bind("pageinit", function (){
                 var url = vals[1];
                 $("#timelineResult").append("<li id = '"+ key + "' >" +info+"</li>");
                 addClickLinsten(key,url);
+            }else if (key == "isUserPrivate" && value != null) {
+                
+            }else if (key == "isUserTimeLinePrivate" && value != null) {
+                
             }else{
                 continue;
             }
@@ -30,8 +34,13 @@ $(document).bind("pageinit", function (){
     //TODO:把localstorage数据以及用户id发送到java后台,获取用户推荐
     function sendToJavaBackgroundFriend() {
         var xhr = new XMLHttpRequest();
+        var isUserPrivate = true;
+        if(window.localStorage.getItem("isUserPrivate") == null){
+            isUserPrivate = false;
+        }
         var url = "http://localhost:8090/fanfou_Web_exploded/friendRe?user_id=" + window.localStorage.getItem("user_id") 
-            + "&URAtop_k=" + window.localStorage.getItem("URAtop_k") + "&selectURA=" + window.localStorage.getItem("selectURA");
+            + "&URAtop_k=" + window.localStorage.getItem("URAtop_k") + "&selectURA=" + window.localStorage.getItem("selectURA")
+            +"&isUserPrivate=" + isUserPrivate;
         xhr.open("GET",url,true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
@@ -45,17 +54,37 @@ $(document).bind("pageinit", function (){
         }
         xhr.send();
     }
-
-
-    //TODO:把localstorage数据以及用户id发送到java后台,获取消息推荐
-    function sendToJavaBackgroundFriendTimeLine(referId){
+    function sendToBackgroundCrawlerTimeline(referId){
         var xhr = new XMLHttpRequest();
-        var url = "http://localhost:8090/fanfou_Web_exploded/UserTimeLine?user_id=" + window.localStorage.getItem("user_id") 
-            + "&CRAtop_k=" + window.localStorage.getItem("CRAtop_k") +"&CRAalpha=" +window.localStorage.getItem("CRAalpha");
+        var url = "http://localhost:8090/fanfou_Web_exploded/crawlerTimeline?user_id=" + window.localStorage.getItem("user_id"); 
         xhr.open("GET",url,true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 window.clearInterval(referId);
+                $.mobile.hidePageLoadingMsg();
+                // JSON解析器不会执行攻击者设计的脚本.
+                var ret=xhr.responseText;
+                alert(ret);
+                // showRecommendationResult(ret,"#timelineResult");
+                // $("#timelineLog").text(ret);
+            }
+        }
+        xhr.send();
+    }
+
+    //TODO:把localstorage数据以及用户id发送到java后台,获取消息推荐
+    function sendToJavaBackgroundFriendTimeLine(){
+        var xhr = new XMLHttpRequest();
+        var isUserTimeLinePrivate = true;
+        if(window.localStorage.getItem("isUserTimeLinePrivate") == null){
+            isUserTimeLinePrivate = false;
+        }
+        var url = "http://localhost:8090/fanfou_Web_exploded/UserTimeLineRe?user_id=" + window.localStorage.getItem("user_id") 
+            + "&CRAtop_k=" + window.localStorage.getItem("CRAtop_k") +"&CRAalpha=" +window.localStorage.getItem("CRAalpha")
+            +"&isUserTimeLinePrivate=" + isUserTimeLinePrivate;
+        xhr.open("GET",url,true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
                 $.mobile.hidePageLoadingMsg();
                 // JSON解析器不会执行攻击者设计的脚本.
                 var ret=xhr.responseText;
@@ -67,7 +96,6 @@ $(document).bind("pageinit", function (){
         xhr.send();
        
     }
-    // function set_
     function sendToGetLog(){
         var xhr = new XMLHttpRequest();
         var url = "http://localhost:8090/fanfou_Web_exploded/progress";
@@ -116,16 +144,16 @@ $(document).bind("pageinit", function (){
         }
     }
         //为结果添加监听
-    function addClickLinsten(li_id,url){
-        console.log(li_id);
-        $("#"+li_id).unbind("click").bind("click", function (event, ui) {
-            chrome.tabs.create({url: url,selected:false});
-        });
+    function addClickLinsten(li_id,url){ 
+        if(url.match("http")){
+            // console.log(li_id);
+            $("#"+li_id).unbind("click").bind("click", function (event, ui) {
+                chrome.tabs.create({url: url,selected:false});
+            });
+        }
+       
     }
-    function test(){
-        $("#userResult").append("<li id =\"ttt\"> <a href='www.baidu.com'>baidu </a> </li>");
-        $("#userResult").listview('refresh');
-    }
+
     // 清空上次用户推荐
     function clearLastUserRecommend(){
         $('#userResult li').remove()
@@ -148,7 +176,7 @@ $(document).bind("pageinit", function (){
         }
     }
 
-    // 点击推荐后：清空上次推荐，发送请求，处理响应
+    // 点击用户推荐后：清空上次推荐，发送请求，处理响应
     $("#reUser").unbind("click").bind("click", function (event, ui) {
     	 // test();
         clearLastUserRecommend();
@@ -160,17 +188,29 @@ $(document).bind("pageinit", function (){
         console.log(window.localStorage.getItem("selectURA"));
     });
 
-
+    // 点击爬取用户消息
+    $("#crawlerTimeLine").unbind("click").bind("click", function (event, ui) {  
+        var referId = window.setInterval(sendToGetLog,500);
+        $.mobile.loadingMessageTextVisible = true;
+        sendToBackgroundCrawlerTimeline(referId);
+        console.log("crawler user_id:",window.localStorage.getItem("user_id"));
+    });
+    //点击推荐消息
     $("#reTimeLine").unbind("click").bind("click", function (event, ui) {
     	//test()
         clearLastTimelineRecommend();
-        var referId = window.setInterval(sendToGetLog,500);
-        sendToJavaBackgroundFriendTimeLine(referId);
         $.mobile.loadingMessageTextVisible = true;
+        $.mobile.showPageLoadingMsg( 'a', "Please wait..." );
+        //var referId = window.setInterval(sendToGetLog,500);
+        sendToJavaBackgroundFriendTimeLine();
+        
         // $.mobile.showPageLoadingMsg( 'a', "Please wait..." );
         console.log("CRAtop_k:",window.localStorage.getItem("CRAtop_k"));
         console.log("CRAalpha:",window.localStorage.getItem("CRAalpha"));
 
     });
-
+    function test(){
+        $("#userResult").append("<li id =\"ttt\"> <a href='www.baidu.com'>baidu </a> </li>");
+        $("#userResult").listview('refresh');
+    }
 });

@@ -11,7 +11,7 @@ public class RequestCheckUtil {
 
     }
     public static boolean isFriendRequestLegal(HttpServletRequest request){
-        if(request.getParameter("user_id") == null){
+        if(!isUserIdLegal(request)){
             return false;
         }
         if(!StringUtil.isNumeric(request.getParameter("URAtop_k"))){
@@ -26,9 +26,15 @@ public class RequestCheckUtil {
         }
         return true;
     }
+    public static boolean isUserIdLegal(HttpServletRequest request){
+        if(request.getParameter("user_id") == null){
+            return false;
+        }
+        return true;
+    }
 
     public static boolean isUserTimeLineRequestLegal(HttpServletRequest request){
-        if(request.getParameter("user_id") == null){
+        if(!isUserIdLegal(request)){
             return false;
         }
         if(!StringUtil.isNumeric(request.getParameter("CRAtop_k"))){

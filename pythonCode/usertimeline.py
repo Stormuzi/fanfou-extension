@@ -103,6 +103,8 @@ if __name__ == '__main__':
     # 传递过来的参数：
     need_top_k = int(sys.argv[1])
     alpha = float(sys.argv[2])
+    user_id = str(sys.argv[3])
+    isUserTimeLinePrivate = str(sys.argv[4])
 
     print('need_top_k: ',need_top_k)
     print ('initial_data')
@@ -124,7 +126,7 @@ if __name__ == '__main__':
 
     re_uid = 0
     for uid in range(len_user):
-        if(LU[uid] != "~Z-lo_exzyRQ"):
+        if(LU[uid] != user_id):
             continue
         re_uid = uid
         content = 'user:' + str(uid) +"LU[uid]:"+LU[uid] + '\t' + str(Gt[uid][0][0]) + ':' + str(Gt[uid][0][1])+ " item:"+LI[Gt[uid][0][0]]
@@ -142,7 +144,7 @@ if __name__ == '__main__':
             continue
         elif(cur_grade == Gt[re_uid][i][1]):
             count += 1
-            dict_top_k_list.append(LI[Gt[re_uid][i][0]])
+            dict_top_k_list.append(LI[Gt[re_uid][i][0]] + ':' + str(Gt[re_uid][i][1])[0:5])
             need_top_k -= 1
             if(need_top_k <= 0):
                 break
@@ -153,7 +155,7 @@ if __name__ == '__main__':
                 continue
             count = 1
             cur_grade = Gt[re_uid][i][1]
-            dict_top_k_list.append(LI[Gt[re_uid][i][0]])
+            dict_top_k_list.append(LI[Gt[re_uid][i][0]] + ':' + str(Gt[re_uid][i][1])[0:5])
             need_top_k -= 1
             if(need_top_k <= 0):
                 break
