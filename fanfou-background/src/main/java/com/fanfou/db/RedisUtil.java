@@ -16,7 +16,7 @@ public class RedisUtil {
      */
     public static Jedis getJedis(){
         Jedis jedis = new Jedis("localhost");
-        if(jedis == null){
+        if(!jedis.isConnected()){
             System.out.println("redis 没有启动！！");
         }
         System.out.println("连接成功");

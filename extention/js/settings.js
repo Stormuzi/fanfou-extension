@@ -173,6 +173,7 @@ $(document).bind("pageinit", function () {
 		}else{
 			window.localStorage["URAtop_k"] = $("#URAtop_k").val();
 		}
+        window.localStorage["usedWBADtag"] = "USED";
     });
     //表单验证,验证top_k参数
     $("#CRAtop_k").blur(function(){
@@ -184,6 +185,7 @@ $(document).bind("pageinit", function () {
 		}else{
 			window.localStorage["CRAtop_k"] = $("#CRAtop_k").val();
 		}
+        window.localStorage["usedWBADtag"] = "USED";
     });
     $("#CRAalpha").blur(function(){
     	var r=/^[0-9]+([.]{1}[0-9]+){0,1}$/; 
@@ -194,6 +196,7 @@ $(document).bind("pageinit", function () {
 		}else{
 			window.localStorage["CRAalpha"] = $("#CRAalpha").val();
 		}
+        window.localStorage["usedWBADtag"] = "USED";
     });
 
 

@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="Maven: org.python:jython:2.5.2">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/python/jython/2.5.2/jython-2.5.2.jar!/" />
+    </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/org/python/jython/2.5.2/jython-2.5.2-javadoc.jar!/" />
     </JAVADOC>
